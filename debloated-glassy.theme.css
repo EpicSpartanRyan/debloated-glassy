@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 10.2.4
+  * @version 10.3.0
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -1047,7 +1047,12 @@ li[class*="dm_"] [class*="subText_"] {
 }
 
 /* Las carpetas de servidores: efecto glassy/difuminado,
-   para menor ruido visual. */
+   para menor ruido visual.
+   v10.2.7: se restauran los blurs (backdrop-filter en el botón y
+   filter en la preview) que se habían quitado en v10.2.5 — el
+   diagnóstico demostró que la carpeta en blanco era por el
+   focusStroke (ya corregido en v10.2.6), no por los blurs. A Bryan
+   le gustaba el difuminado cuando la carpeta está contraída. */
 [class*="folderButtonInner"] {
   background: rgba(255, 255, 255, 0.08) !important;
   backdrop-filter: blur(10px) !important;
@@ -1055,6 +1060,18 @@ li[class*="dm_"] [class*="subText_"] {
 [class*="folderPreview"] {
   filter: blur(2px) !important;
   opacity: 0.85 !important;
+}
+/* v10.2.6 (2026-11-19): la carpeta seguía en blanco. El diagnóstico
+   en consola lo confirmó: el <use> del focusStroke seguía con fill
+   rgb(255,255,255) — la regla anterior solo apuntaba al <g>, y el
+   <use> no heredaba el transparente. Ahora se apunta también al <use>
+   directamente, para que el blob no se pinte de blanco sólido y tape
+   el ícono y la preview de la carpeta. */
+nav[class*="guilds_"] [class*="focusStroke_"],
+nav[class*="guilds_"] [class*="focusStroke_"] use,
+nav[class*="guilds_"] [class*="focusFill_"],
+nav[class*="guilds_"] [class*="focusFill_"] use {
+  fill: transparent !important;
 }
 
 /* La píldora "New Unreads" al final de la lista de canales: glassy. */
