@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 9.6
+  * @version 9.7
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -712,6 +712,17 @@ aside:has([class*="user-profile-sidebar"]) {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+/* v9.7 (2026-11-19): Bryan: el botón "+" (Add a Server) al final de la
+   lista de servidores se ve como un punto blanco enorme en lugar del
+   icono de +. El SVG del icono tiene un círculo transparente (r=10)
+   detrás del path (un disco con un hueco en forma de +); las reglas de
+   blanco del tema pintan ese círculo de blanco, así que el hueco del +
+   muestra blanco en lugar del fondo del botón y el + desaparece. Se
+   devuelve el círculo a transparente. */
+[class*="circleIconButton_"] svg circle[fill="transparent"] {
+  fill: transparent !important;
 }
 
 /* Las insignias (badges) del perfil no se muestran. */
