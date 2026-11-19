@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 10.3.5
+  * @version 10.3.6
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -1664,6 +1664,18 @@ nav[class*="guilds_"]:hover {
    que la altura) para que no cambie en hover y la barra no se mueva. */
 #vc-spotify-progress-bar [class*="slider_"] {
   --bar-size: 14px !important;
+}
+
+/* v10.3.6 (2026-11-19): la línea curva (spine) que conecta una respuesta
+   con el mensaje original, en blanco. La línea se dibuja con bordes
+   (el elemento y su ::before), así que se pone border-color blanco en
+   ambos. */
+[class*="repliedMessageClickableSpine_"] {
+  border-color: #ffffff !important;
+}
+[class*="repliedMessageClickableSpine_"]::before,
+[class*="repliedMessageClickableSpine_"]::after {
+  border-color: #ffffff !important;
 }
 
 /* ============ GTA Hexagon: gradiente con dithering real ============ */
