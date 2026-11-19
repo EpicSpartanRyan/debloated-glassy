@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 10.3.1
+  * @version 10.3.3
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -439,14 +439,30 @@ svg[class*="cursorDefault_"] {
   opacity: 0 !important;
 }
 
-/* v9.0 (2026-11-19): el puntito verde de los DM en grupo (facepile "Uzi,
-   Sara"): es otro componente distinto al avatar individual — un svg de
-   10×10 (mask_PlwcO5) con un div status_PlwcO5 verde #45a366 y máscara
-   svg-mask-status-online. Se esconde el svg entero; el selector :has()
-   con la máscara es el durable (las clases llevan hash y pueden cambiar
-   en cada build de Discord). */
-[class*="avatar"] svg[class*="mask_PlwcO5"],
-[class*="avatar"] svg:has(> foreignObject[mask*="svg-mask-status-"]) {
+/* v10.3.2 (2026-11-19): el puntito verde de los DM en grupo (facepile "Uzi,
+   Sara") seguía viéndose con la v9.0: el svg de 10×10 (mask_PlwcO5) con
+   el div status_PlwcO5 verde #45a366 NO está dentro del div del avatar,
+   es hermano suyo dentro de la fila del DM, así que el scope
+   [class*="avatar"] de la v9.0 nunca lo alcanzaba. Ahora el scope es la
+   fila del DM (li dm_*), que sí lo contiene; el :has() con la máscara es
+   el durable (las clases llevan hash y pueden cambiar en cada build). */
+li[class*="dm_"] svg[class*="mask_PlwcO5"],
+li[class*="dm_"] svg:has(> foreignObject[mask*="svg-mask-status-"]) {
+  display: none !important;
+}
+
+/* v10.3.3 (2026-11-19): el recorte circular del facepile ("Uzi, Sara")
+   seguía viéndose tras la v10.3.2: el punto verde ya no está, pero la
+   máscara svg-mask-diagonal-facepile-status-32 recorta la primera imagen
+   con un círculo (el hueco del punto + el solape del segundo avatar).
+   Se esconden las formas no blancas de esa máscara (misma técnica que
+   la v8.8), así la primera imagen vuelve a ser un círculo completo y el
+   segundo avatar se solapa encima limpio. Solo formas (circle/path/rect/
+   ellipse), nunca grupos, para no esconder el círculo base blanco. */
+mask[id*="facepile"] circle:not([fill="white"]),
+mask[id*="facepile"] path:not([fill="white"]),
+mask[id*="facepile"] rect:not([fill="white"]),
+mask[id*="facepile"] ellipse:not([fill="white"]) {
   display: none !important;
 }
 
