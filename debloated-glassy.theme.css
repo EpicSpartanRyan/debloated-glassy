@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 9.8
+  * @version 9.9
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -735,6 +735,13 @@ aside:has([class*="user-profile-sidebar"]) {
    completo que contiene el botón, y con eso desaparece también el
    tooltip (ya no hay nada que hoverear). */
 [class*="listItem_"]:has([data-list-item-id="guildsnav___guild-discover-button"]) {
+  display: none !important;
+}
+
+/* v9.9 (2026-11-19): Bryan: esconder las flechas de atrás/adelante
+   (Go back / Go forward) de arriba a la izquierda, en la barra
+   superior. No las usa. */
+[class*="backForwardButtons_"] {
   display: none !important;
 }
 
