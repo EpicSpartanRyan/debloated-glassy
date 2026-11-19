@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 10.2
+  * @version 10.2.1
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -790,6 +790,12 @@ aside:has([class*="user-profile-sidebar"]) {
 /* v10.2 (2026-11-19): Bryan: eliminar el nombre del canal de la barra
    superior (el texto junto al icono del servidor). */
 [class*="title_LnjVAX"] > div[class*="defaultColor_"] {
+  display: none !important;
+}
+
+/* v10.2.1 (2026-11-19): Bryan: eliminar el icono del canal (#) de la
+   barra superior del chat. */
+[class*="upperContainer_"] [class*="channelIcon_"] {
   display: none !important;
 }
 
