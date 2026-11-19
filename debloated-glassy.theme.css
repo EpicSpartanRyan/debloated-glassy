@@ -1,8 +1,9 @@
 /**
-  * @name debloated-glassy
-  * @author EpicSpartanRyan
-  * @version 8.6
-  * @description Debloated Discord theme with glassy panels
+  * @name debloated-glassy.theme.css
+  * @author EpicSpartanRyan & Valentinhere1
+  * @version 10.0
+  * @description Debloated glassy minimalista para Vesktop/Vencord con estética GTA VI
+  * Todo el CSS vive en este archivo: no importa ningún otro .css.
 */
 
 .searchBar_u88IQl .searchBarComponent__35e86 {
@@ -1218,24 +1219,7 @@ button[aria-label*="Zoom" i] {
   display: none !important;
 }
 
-/* ============ Servidores: barra lateral colapsada a 10px, se expande con hover ============ */
-/* v5.3: la barra de servidores (izquierda, iconos) queda colapsada
-   a solo 10px de ancho. Al hacer hover sobre esa franja, se expande
-   a su ancho normal (72px) con una transición suave. Al quitar el
-   mouse, vuelve a colapsarse. Aplica a todo el nav (iconos, carpetas,
-   botón +, Discover). */
-nav[class*="guilds_"] {
-  width: 10px !important;
-  min-width: 10px !important;
-  max-width: 10px !important;
-  overflow: hidden !important;
-  transition: width 0.2s ease-out, min-width 0.2s ease-out, max-width 0.2s ease-out !important;
-}
-nav[class*="guilds_"]:hover {
-  width: 72px !important;
-  min-width: 72px !important;
-  max-width: 72px !important;
-}
+/* ============ Servidores: la barra horizontal vive en la sección v10 (final) ============ */
 
 /* ============ Spotify: info y tiempos ocultos, barra y controles visibles ============ */
 /* Al reproducir en Spotify (Vencord), se oculta la parte de
@@ -1822,4 +1806,717 @@ div[class*="role_p3g15p"] {
 }
 [class*="tooltip_"] * {
   color: #fff !important;
+}
+
+/* ============================================================================
+   GTA VI · VICE GLASSY  v10.0 — minimal
+   ============================================================================
+   - Gradiente: se respeta la del tema original (04.png), sin tocarla.
+   - Sin bordes, sin líneas, sin glows. Todos los radios: 8px.
+   - Servidores: rail vertical normal a la izquierda, oculto. Al pasar el
+     mouse por la franja aparece y se puede usar; al salir se oculta.
+   - Popups/modales: superficie propia opaca (no se ve el fondo a través).
+   ========================================================================== */
+
+/* ---------- Paleta (solo acentos; el fondo es la gradiente original) ---------- */
+:root {
+  --gta-pink: #ff2e88;
+  --gta-cyan: #22e6ff;
+  --gta-violet: #7b2ff7;
+  --gta-surface: rgba(18, 7, 28, 0.965);
+  --gta-font-display: "Bahnschrift SemiCondensed", "Bahnschrift", "Segoe UI Semibold", "Segoe UI", system-ui, sans-serif;
+  --gta-font: "Segoe UI", system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--gta-pink);
+  color: #fff;
+}
+
+/* ---------- Variables de Discord ---------- */
+.theme-dark,
+.theme-darker,
+.theme-midnight {
+  --font-primary: var(--gta-font);
+  --font-display: var(--gta-font-display);
+
+  --background-primary: rgba(20, 6, 32, 0.30);
+  --background-primary-alt: transparent;
+  --background-secondary: rgba(32, 10, 50, 0.28);
+  --background-secondary-alt: transparent;
+  --background-tertiary: transparent;
+  --background-floating: var(--gta-surface);
+  --background-nested-floating: var(--gta-surface);
+  --background-mobile-primary: transparent;
+  --background-mobile-secondary: transparent;
+  --background-modifier-hover: rgba(255, 255, 255, 0.08);
+  --background-modifier-active: rgba(255, 255, 255, 0.12);
+  --background-modifier-selected: rgba(255, 255, 255, 0.16);
+  --background-modifier-accent: rgba(255, 255, 255, 0.10);
+  --background-message-hover: rgba(255, 255, 255, 0.045);
+  --background-mentioned: rgba(255, 46, 136, 0.12);
+  --background-mentioned-hover: rgba(255, 46, 136, 0.18);
+
+  --text-normal: #fdf4ff;
+  --text-muted: #dcc4f2;
+  --text-link: var(--gta-cyan);
+  --header-primary: #ffffff;
+  --header-secondary: #ffd9f2;
+  --channels-default: #e6d0fa;
+  --interactive-normal: #d9bdf0;
+  --interactive-hover: #ffffff;
+  --interactive-active: #ffffff;
+  --interactive-muted: #9a7fb5;
+  --interactive-icon-default: #ffffff;
+
+  --brand-360: #ff6fbe;
+  --brand-500: var(--gta-pink);
+  --brand-560: #e01f74;
+  --brand-600: #c41660;
+  --brand-experiment: var(--gta-pink);
+  --focus-primary: var(--gta-cyan);
+
+  --scrollbar-thin-thumb: rgba(255, 255, 255, 0.28);
+  --scrollbar-auto-thumb: rgba(255, 255, 255, 0.28);
+  --scrollbar-auto-track: transparent;
+  --scrollbar-thin-track: transparent;
+}
+
+/* ---------- Tipografía ---------- */
+[class*="titleWrapper_"] h1,
+[class*="headerTitle_"],
+[class*="sectionTitle_"],
+[class*="membersGroup_"],
+[class*="modal_"] h1,
+[class*="modal_"] h2,
+[class*="guildName_"] {
+  font-family: var(--gta-font-display) !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase;
+}
+
+[class*="markup_"] a,
+[class*="anchor_"] {
+  color: var(--gta-cyan) !important;
+}
+
+[class*="markup_"] code {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-radius: 8px !important;
+}
+
+/* ---------- Paneles: sin líneas ni blur extra (la gradiente se ve) ---------- */
+.sidebar_pog62O {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  border: none !important;
+}
+
+.panels_pog62O {
+  border: none !important;
+}
+
+.membersWrap_86es0b,
+.members_86es0b {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  border: none !important;
+}
+
+/* ---------- Barra de texto ---------- */
+.channelTextArea_z_gUBg {
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  transition: background-color 0.18s ease-out !important;
+}
+
+.channelTextArea_z_gUBg:focus-within {
+  background: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: none !important;
+}
+
+/* Radios: lo que el tema original dejaba en 15/20/30px pasa a 8px. */
+.searchBar_u88IQl .searchBarComponent__35e86,
+.searchBar-zdmu7v,
+.jumpToPresentBar_j9Vvzj,
+.background_a9178b,
+.menu_M3qk4j,
+.colorDefault-CDqZdO,
+div[class*="wrapper_UcGqzv"],
+div[class*="container_0PLWhS"] {
+  border-radius: 8px !important;
+}
+
+/* ---------- Mensajes ---------- */
+[class*="messageListItem"]:hover {
+  background: rgba(255, 255, 255, 0.045) !important;
+}
+
+[class*="wrapper_"][class*="mentioned"],
+[class*="message_"][class*="mentioned"] {
+  background: var(--background-mentioned) !important;
+  box-shadow: none !important;
+}
+
+/* ---------- Botones, badges, scrollbar ---------- */
+[class*="lookFilled_"]:not([class*="colorDanger"]):not([class*="colorRed"]):not([class*="colorGreen"]) {
+  background: rgba(255, 255, 255, 0.14) !important;
+  background-image: none !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  color: #fff !important;
+}
+
+[class*="lookFilled_"]:not([class*="colorDanger"]):hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  box-shadow: none !important;
+}
+
+[class*="numberBadge"],
+[class*="mentionsBadge"] {
+  background: var(--gta-pink) !important;
+  box-shadow: none !important;
+  border-radius: 8px !important;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.28) !important;
+  border-radius: 8px !important;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.42) !important;
+}
+
+/* Piezas chicas del debloat que quedaban glassy en blanco. */
+[class*="buttonContainer"] [class*="buttonsInner"],
+.jumpToPresentBar_j9Vvzj {
+  background: var(--gta-surface) !important;
+  border: none !important;
+  border-radius: 8px !important;
+}
+
+[class*="bar_t1P8Sn"] {
+  background: var(--gta-surface) !important;
+  box-shadow: none !important;
+  border-radius: 8px !important;
+}
+
+/* ============================================================================
+   SERVIDORES: rail vertical izquierdo, oculto hasta hacer hover
+   ==========================================================================
+   - El rail mantiene su ancho normal: la lista de canales no se mueve.
+   - Su contenido está invisible; solo una franja de 28px a la izquierda
+     (todo el alto) dispara el hover, no los 72px del rail.
+   - Al salir del rail (o soltar el foco) se vuelve a ocultar.
+   - Iconos, carpetas y tooltips funcionan normal mientras está visible.
+   ========================================================================== */
+
+nav[class*="guilds_"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
+}
+
+/* Franja de hover: 28px de ancho y 100% del alto, invisible. */
+nav[class*="guilds_"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 28px;
+  pointer-events: auto !important;
+}
+
+/* Franja de hover: el nav sigue existiendo aunque su contenido no se vea. */
+nav[class*="guilds_"] > * {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.16s ease-out !important;
+}
+
+/* Se muestra con el mouse encima o con foco de teclado (Tab). */
+nav[class*="guilds_"]:hover > *,
+nav[class*="guilds_"]:has(:focus-visible) > * {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Ruido fuera del rail. */
+nav[class*="guilds_"] [class*="unreadMentionsIndicator"],
+nav[class*="guilds_"] [class*="guildSeparator"],
+nav[class*="guilds_"] span[class*="item__o8_Xq"],
+nav[class*="guilds_"] [class*="listItem_rwEpIL"]:has([class*="guildSeparator"]) {
+  display: none !important;
+}
+
+/* Hover de servidor: fondo suave y 8px, sin tocar tamaños ni posiciones. */
+nav[class*="guilds_"] [class*="listItem_rwEpIL"]:hover [class*="blobContainer"],
+nav[class*="guilds_"] [class*="listItem_rwEpIL"]:hover [class*="childWrapper"],
+nav[class*="guilds_"] [class*="listItemWrapper_tQErD4"]:hover {
+  background: rgba(255, 255, 255, 0.10) !important;
+  border-radius: 8px !important;
+}
+
+/* El handle de resize de la lista de canales no dibuja línea. */
+div[class*="sidebarResizeHandle"] {
+  opacity: 0 !important;
+}
+
+/* El panel de usuario (avatar, mute, ajustes) se ancla a la barra lateral.
+   Si la sidebar deja de ser el contexto, el panel se estira a todo el ancho
+   de la ventana (el bug que se veía con la barra horizontal). */
+div[class*="sidebar_pog62O"] {
+  position: relative !important;
+}
+
+/* ---------- Lista de miembros colapsada (60px): solo avatares ---------- */
+/* El tema base la deja en 60px y la expande a 240px al hacer hover. En 60px
+   los nombres y los encabezados de rol no caben y se ven aplastados, así que
+   se ocultan hasta que el hover la expande. */
+.members_86es0b:not(:hover) [class*="membersGroup"],
+.members_86es0b:not(:hover) [class*="member_"] [class*="name_"],
+.members_86es0b:not(:hover) [class*="member_"] [class*="username"],
+.members_86es0b:not(:hover) [class*="member_"] [class*="subtext"],
+.members_86es0b:not(:hover) [class*="member_"] [class*="activity"] {
+  display: none !important;
+}
+
+/* Barra de título de la ventana: hover limpio. */
+div[class*="bar_3zSH5d"] [role="button"] {
+  border-radius: 8px !important;
+  transition: background-color 0.14s ease-out !important;
+}
+
+div[class*="bar_3zSH5d"] [role="button"]:hover {
+  background: rgba(255, 255, 255, 0.10) !important;
+}
+
+/* ============================================================================
+   MODALES, MENÚS, POPOUTS, TOOLTIPS Y AUTOCOMPLETE
+   ==========================================================================
+   Regla: la caja flotante es opaca (no se ve el gradiente a través), su
+   interior no repinta fondo gris, y todo es 8px sin borde.
+   ========================================================================== */
+/* El diálogo y su contenedor no pintan: la caja es el hijo directo.
+   (role="dialog" suele estar en el focus-lock de pantalla completa). */
+div[role="dialog"],
+[class*="modalRoot"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Caja flotante: solo la caja, nunca la capa de pantalla completa. */
+[class*="modal_"],
+[class*="popout_"],
+[class*="popover_"],
+[class*="userPopout"],
+[class*="userProfileOuter"],
+[class*="userProfileModal"],
+[class*="messagesPopout"],
+[class*="recentMentions"],
+[class*="searchResultsWrap"],
+[class*="searchResultsContainer"],
+[class*="quickswitcher"],
+[class*="emojiPicker"],
+[class*="expressionPicker"],
+[class*="picker_"],
+[class*="folderPopout"],
+[class*="settingsPopout"],
+[class*="menu_"],
+[class*="tooltip_"],
+[class*="autocomplete_"]:not([class*="Inner"]),
+div[role="menu"],
+div[role="listbox"],
+div[role="tooltip"] {
+  background: var(--gta-surface) !important;
+  backdrop-filter: blur(18px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.2) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.50) !important;
+  background-clip: padding-box !important;
+}
+
+div[role="dialog"] > div {
+  background: var(--gta-surface) !important;
+  backdrop-filter: blur(18px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.2) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.50) !important;
+}
+
+/* El interior de modales/popouts no pinta su propio gris encima. */
+div[role="dialog"] > div > div,
+[class*="modal_"] > div,
+[class*="popout_"] > div,
+[class*="popover_"] > div,
+[class*="userPopout"] > div,
+[class*="menu_"] > div,
+div[role="dialog"] [class*="content_"],
+div[role="dialog"] [class*="container_"] {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Menús dentro de una superficie ya opaca: sin fondo propio. */
+[class*="user-profile-popout"] [class*="menu_"],
+[class*="user-profile-sidebar"] [class*="menu_"],
+[class*="userPopout"] [class*="menu_"],
+[class*="popout_"] [class*="menu_"],
+[class*="modal" i] [class*="menu_"],
+[class*="searchResultsWrap"] [class*="menu_"] {
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Autocomplete: solo el contenedor exterior tiene superficie. */
+[class*="autocompleteInner"],
+[class*="autocomplete"] [class*="list_"] {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Cualquier caja flotante con spinner/loading toma la superficie del tema. */
+div[class*="layer_"] > div[class*="container_"]:has([class*="spinner"]),
+div[class*="layer_"] > div[class*="root_"]:has([class*="spinner"]),
+div[class*="layer_"] > div:has(> [class*="spinner"]),
+div[class*="layer_"] > div:has(> div > [class*="spinner"]):not([class*="focusLock"]):not([role="dialog"]),
+div[class*="container_"]:has(> [class*="spinner"]) {
+  background: var(--gta-surface) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.50) !important;
+}
+
+/* Fundido del fondo al abrir un modal (capa y backdrop). */
+[class*="backdrop" i],
+div[class*="layer_"]:has(> [role="dialog"]):not(:has([class*="backdrop" i])),
+div[class*="layer_"]:has(> [class*="modal" i]):not(:has([class*="backdrop" i])) {
+  background: rgba(8, 1, 14, 0.66) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Respaldo si el backdrop no existe: oscurece todo alrededor del diálogo. */
+[role="dialog"][aria-modal="true"] {
+  box-shadow:
+    0 0 0 100vmax rgba(8, 1, 14, 0.66),
+    0 18px 50px rgba(0, 0, 0, 0.50) !important;
+}
+
+/* Flecha del tooltip a juego con la superficie. */
+[class*="tooltipPointer"] {
+  background: var(--gta-surface) !important;
+  border: none !important;
+}
+
+/* Inputs y selects dentro de cualquier caja flotante. */
+[role="dialog"] input:not([type="checkbox"]):not([type="radio"]),
+[role="dialog"] textarea,
+[role="dialog"] [class*="input_"],
+[role="dialog"] [class*="select_"],
+[class*="menu_"] input,
+[class*="popout_"] input,
+[class*="modal" i] input:not([type="checkbox"]):not([type="radio"]),
+[class*="modal" i] textarea,
+[class*="contentRegion"] input:not([type="checkbox"]):not([type="radio"]) {
+  background: rgba(10, 2, 18, 0.55) !important;
+  background-image: none !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: #fff !important;
+}
+
+[role="dialog"] input::placeholder,
+[class*="modal" i] input::placeholder {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+/* Botones dentro de modales: planos y a juego. */
+[role="dialog"] button,
+[class*="modal" i] button,
+[class*="popout_"] button {
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+/* Filas de menú. */
+[role="menuitem"],
+[role="menuitemradio"],
+[role="menuitemcheckbox"],
+[role="option"] {
+  border-radius: 8px !important;
+  transition: background-color 0.12s ease-out, color 0.12s ease-out !important;
+}
+
+/* ============================================================================
+   ESTADOS: hover, active, focus, seleccionados e iconos
+   ========================================================================== */
+
+/* Botones (clases normales de Discord; no toca los de la barra de ventana). */
+[class*="button_"]:hover,
+[class*="button_"]:focus-visible {
+  background-color: rgba(255, 255, 255, 0.10) !important;
+  box-shadow: none !important;
+}
+
+[class*="button_"]:active {
+  background-color: rgba(255, 255, 255, 0.16) !important;
+}
+
+/* Iconos de la barra de canales, toolbar y cabecera. */
+[class*="toolbar_ybUK7Z"] [class*="iconWrapper"],
+div[class*="toolbar_"] [class*="clickable"] {
+  border-radius: 8px !important;
+  transition: background-color 0.14s ease-out !important;
+}
+
+div[class*="toolbar_"] [class*="clickable"]:hover,
+[class*="toolbar_ybUK7Z"] [class*="iconWrapper"]:hover {
+  background: rgba(255, 255, 255, 0.10) !important;
+}
+
+/* Filas de DMs y canales. */
+[class*="interactive_nl_k3a"]:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-radius: 8px !important;
+}
+
+[class*="selected_nl_k3a"],
+[class*="interactive_nl_k3a"][class*="selected"] {
+  background: rgba(255, 46, 136, 0.16) !important;
+  border-radius: 8px !important;
+}
+
+/* Canales de un servidor (hover / seleccionado / no leído). */
+[class*="link_"]:hover,
+[class*="linkButton_zln_tS"]:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-radius: 8px !important;
+}
+
+[class*="modeSelected_"],
+[class*="link_"][aria-current="page"] {
+  background: rgba(255, 46, 136, 0.16) !important;
+  border-radius: 8px !important;
+}
+
+[class*="modeUnread"] [class*="name_"],
+[class*="modeUnread"] [class*="icon_"] {
+  color: #fff !important;
+}
+
+/* Botones del panel de usuario (micro, audio, ajustes). */
+[class*="button_Y-8oZW"]:hover,
+[class*="button_hfM7yP"]:hover,
+[class*="button_s8hOwn"]:hover,
+[class*="button_Z0MHyc"]:hover {
+  background: rgba(255, 255, 255, 0.10) !important;
+}
+
+/* Botones del chat (emoji, adjuntar, GIF, regalo). */
+[class*="button_2x8-Qn"]:hover,
+[class*="attachButton"]:hover,
+[class*="emojiButton"]:hover,
+[class*="stickerButton"]:hover {
+  background: rgba(255, 255, 255, 0.10) !important;
+  border-radius: 8px !important;
+}
+
+/* Barra de texto del chat: una sola capa (la de v6.5) y radio 8px. */
+[class*="themedBackground_2x8-Qn"] {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+[class*="channelTextArea_2x8-Qn"] {
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+[class*="channelTextArea_2x8-Qn"]:focus-within,
+[class*="channelTextArea_z_gUBg"]:focus-within {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: none !important;
+}
+
+[class*="textArea_2x8-Qn"],
+[class*="textAreaSlate_2x8-Qn"],
+[class*="slateTextArea"],
+[class*="placeholder_"] {
+  color: #fff !important;
+  background: transparent !important;
+}
+
+/* Botones con borde (lookOutlined / lookLink): planos, sin borde. */
+[class*="lookOutlined_"] {
+  background: rgba(255, 255, 255, 0.10) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+[class*="lookOutlined_"]:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+}
+
+[class*="lookLink_"],
+[class*="lookBlank_"] {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Checkbox, radio, switch y sliders toman el acento del tema. */
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"] {
+  accent-color: var(--gta-pink) !important;
+}
+
+/* Toasts. */
+[class*="toast"] {
+  background: var(--gta-surface) !important;
+  backdrop-filter: blur(16px) saturate(1.2) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45) !important;
+  color: #fff !important;
+}
+
+/* Hover de miembros. */
+[class*="member_"]:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Focus visible consistente (sin el azul del sistema). */
+:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.35) !important;
+  outline-offset: 2px !important;
+}
+
+[role="option"]:hover,
+[role="option"][aria-selected="true"],
+[role="menuitem"]:hover,
+[role="menuitem"]:focus,
+[role="menuitemradio"][aria-checked="true"],
+[role="menuitemcheckbox"][aria-checked="true"] {
+  background: rgba(255, 255, 255, 0.10) !important;
+  color: #fff !important;
+}
+
+/* ---------- Ajustes: sidebar limpio, sin líneas ---------- */
+[class*="standardSidebarView"] {
+  background: transparent !important;
+}
+
+[class*="sidebarRegionScroller"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  border: none !important;
+}
+
+[class*="sidebarRegion"] [class*="item_"] {
+  border: none !important;
+  border-radius: 8px !important;
+  transition: background-color 0.16s ease-out !important;
+}
+
+[class*="sidebarRegion"] [class*="item_"]:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+[class*="sidebarRegion"] [class*="item_"][class*="selected"],
+[class*="sidebarRegion"] [class*="item_"][aria-current="page"],
+[class*="sidebarRegion"] [class*="item_"][class*="active"] {
+  background: rgba(255, 255, 255, 0.14) !important;
+  box-shadow: none !important;
+  border-radius: 8px !important;
+}
+
+[class*="contentRegion_"] {
+  background: transparent !important;
+}
+
+[class*="tabBar"] [class*="item_"] {
+  border: none !important;
+  border-radius: 8px !important;
+}
+
+[class*="tabBar"] [class*="item_"][class*="selected"],
+[class*="tabBar"] [class*="item_"][aria-selected="true"] {
+  color: #fff !important;
+}
+
+[class*="contentRegion"] [class*="card_"]:not([class*="header"]) {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: none !important;
+  border-radius: 8px !important;
+}
+
+[class*="modal_"] input,
+[class*="modal_"] [class*="input_"],
+[class*="contentRegion"] input {
+  background: rgba(10, 2, 18, 0.55) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: #fff !important;
+}
+
+/* ============================================================================
+   MODO MINIMALISTA
+   Se activa con el modo Compacto de Discord (persistente, sin JS) o con
+   ventana angosta.
+   ========================================================================== */
+body:has([class*="wrapper_"][class*="compact_"]) [class*="membersWrap"],
+body:has([class*="wrapper_"][class*="compact_"]) [class*="members_"],
+body:has([class*="wrapper_"][class*="compact_"]) [class*="nowPlaying"],
+body:has([class*="wrapper_"][class*="compact_"]) [class*="container_GNEh_C"] {
+  display: none !important;
+}
+
+body:has([class*="wrapper_"][class*="compact_"]) [class*="chatContent"] {
+  max-width: 100% !important;
+}
+
+body:has([class*="wrapper_"][class*="compact_"]) section[class*="title_"] [class*="topic_"] {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  [class*="membersWrap"],
+  [class*="members_"],
+  [class*="nowPlaying"],
+  [class*="container_GNEh_C"] {
+    display: none !important;
+  }
+
+  [class*="chatContent"] {
+    max-width: 100% !important;
+  }
+
+  section[class*="title_"] [class*="topic_"] {
+    display: none !important;
+  }
+}
+
+/* ---------- Accesibilidad ---------- */
+@media (prefers-reduced-motion: reduce) {
+  nav[class*="guilds_"],
+  nav[class*="guilds_"] *,
+  div[class*="content_pog62O"],
+  [class*="members_"],
+  [class*="membersWrap"] {
+    transition: none !important;
+    animation: none !important;
+  }
 }
