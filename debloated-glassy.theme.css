@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 9.5
+  * @version 9.6
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -680,6 +680,38 @@ aside:has([class*="user-profile-sidebar"]) {
 }
 [class*="user-profile-sidebar"] [class*="redesignFooter_"] button:hover {
   background: rgba(255, 255, 255, 0.16) !important;
+}
+
+/* v9.6 (2026-11-19): Bryan: dos cambios en las barras de búsqueda.
+   (1) Página de Amigos: quitar el texto "Search" (placeholder). El
+   placeholder no se puede quitar con CSS (es un atributo), así que se
+   vuelve transparente; la barra y la lupa quedan, solo se va el texto.
+   (2) Lista de DMs: la barra ("Find or start a conversation") ahora
+   muestra solo un icono de lupa en lugar del texto. El texto se oculta
+   y se dibuja una lupa blanca (el mismo SVG de Discord) con un ::before
+   en el botón. La lupa quedó en 16px, a la izquierda con el mismo inset
+   que el icono de Friends (12px del borde) — centrado se veía feo. */
+[class*="peopleColumn_"] [class*="searchBar_"] input::placeholder {
+  color: transparent !important;
+}
+[class*="privateChannels_"] [class*="searchBar_"] [class*="overflow__"] {
+  display: none !important;
+}
+[class*="privateChannels_"] [class*="searchBar_"] button {
+  position: relative !important;
+}
+[class*="privateChannels_"] [class*="searchBar_"] button::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20fill='none'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%23ffffff'%20fill-rule='evenodd'%20d='M15.62%2017.03a9%209%200%201%201%201.41-1.41l4.68%204.67a1%201%200%200%201-1.42%201.42l-4.67-4.68ZM17%2010a7%207%200%201%201-14%200%207%207%200%200%201%2014%200Z'%20clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 /* Las insignias (badges) del perfil no se muestran. */
