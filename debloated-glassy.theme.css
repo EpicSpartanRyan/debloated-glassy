@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 10.3.4
+  * @version 10.3.5
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -1615,6 +1615,55 @@ nav[class*="guilds_"]:hover {
 }
 #vc-spotify-progress-bar [class*="grabber_"] {
   background: #ffffff !important;
+}
+
+/* v10.3.5 (2026-11-19): reproductor de Spotify compacto y slider estilo
+   uiverse (alexruix/big-octopus-60). Se compacta verticalmente: menos
+   padding en el reproductor, menos espacio entre la barra y los botones,
+   y botones un poco más chicos. El slider queda como el loader: pista
+   gruesa en forma de píldora (14px, border-radius 50px) y agarradera
+   circular. Ajuste 17:29: el blanco no se veía como el loader, así que
+   se usaron los morados del loader (#9A79FF relleno y agarradera,
+   #D1C2FF pista) y la barra se hizo más gruesa (8px -> 14px). Ajuste
+   17:31: se veía bugeado porque la agarradera (círculo de 16px) y el
+   extremo redondeado del relleno se solapaban formando dos burbujas
+   en vez de una píldora limpia. Se oculta la agarradera: el relleno
+   redondeado ya marca el progreso, igual que el loader (que no tiene
+   agarradera separada, el punto ES el relleno). Arrastrar la barra
+   para buscar sigue funcionando, la agarradera era solo visual. */
+#vc-spotify-player {
+  padding: 4px 8px !important;
+  gap: 4px !important;
+}
+#vc-spotify-progress-bar {
+  margin: 0 !important;
+}
+.vc-spotify-button-row .vc-spotify-button {
+  height: 28px !important;
+  width: 28px !important;
+  padding: 2px !important;
+}
+.vc-spotify-button-row .vc-spotify-button svg {
+  height: 20px !important;
+  width: 20px !important;
+}
+#vc-spotify-progress-bar [class*="bar_"]:has(> [class*="barFill_"]) {
+  height: 14px !important;
+  border-radius: 50px !important;
+  background: #D1C2FF !important;
+}
+#vc-spotify-progress-bar [class*="barFill_"] {
+  border-radius: 50px !important;
+  background: #9A79FF !important;
+}
+#vc-spotify-progress-bar [class*="grabber_"] {
+  display: none !important;
+}
+/* La barra se desplazaba hacia arriba en el hover: Discord agranda
+   --bar-size al pasar el mouse. Se fija la variable en 14px (igual
+   que la altura) para que no cambie en hover y la barra no se mueva. */
+#vc-spotify-progress-bar [class*="slider_"] {
+  --bar-size: 14px !important;
 }
 
 /* ============ GTA Hexagon: gradiente con dithering real ============ */
