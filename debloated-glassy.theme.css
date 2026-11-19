@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 10.2.3
+  * @version 10.2.4
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -805,12 +805,12 @@ aside:has([class*="user-profile-sidebar"]) {
   display: none !important;
 }
 
-/* v10.2.3 (2026-11-19): Bryan: el efecto del DM seleccionado (la
-   nameplate verde de Valen) era un gradiente verde que se hacía más
-   fuerte hacia la derecha, más el video animado. Se cambia a un
-   gradiente blanco que se desvanece hacia la derecha (a la derecha ya
-   no se ve el efecto) y se oculta el video. */
-li[class*="dm_"] [class*="interactiveSelected_"] {
+/* v10.2.4 (2026-11-19): Bryan: el hover del DM debe verse igual que el
+   seleccionado, con el mismo gradiente blanco que se desvanece a la
+   derecha. (v10.2.3: el efecto del DM seleccionado era la nameplate
+   verde; se cambió a un gradiente blanco suave.) */
+li[class*="dm_"] [class*="interactiveSelected_"],
+li[class*="dm_"] [class*="interactive_"]:hover {
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.35) 0%, transparent 70%) !important;
 }
 
