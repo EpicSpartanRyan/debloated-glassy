@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 10.3.0
+  * @version 10.3.1
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -812,6 +812,32 @@ aside:has([class*="user-profile-sidebar"]) {
 li[class*="dm_"] [class*="interactiveSelected_"],
 li[class*="dm_"] [class*="interactive_"]:hover {
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.35) 0%, transparent 70%) !important;
+}
+
+/* v10.3.1 (2026-11-19): Bryan: el mismo gradiente blanco (0.35 a
+   transparente en el 70%) de los DMs, ahora para los canales de los
+   servidores, en seleccionado y en hover. */
+li[class*="containerDefault_"] [class*="modeSelected_"],
+li[class*="containerDefault_"]:hover [class*="wrapper_TNyK-N"] {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.35) 0%, transparent 70%) !important;
+  border-radius: 8px !important;
+}
+/* Fix v10.3.1: el gradiente se veía con bordes rectos y había otro
+   estilo molestando — el fondo uniforme del li (containerDefault)
+   se veía como un rectángulo rígido detrás del gradiente. Se deja
+   transparente para que solo se vea el gradiente suave del wrapper. */
+li[class*="containerDefault_"][class*="selected_"],
+li[class*="containerDefault_"]:hover {
+  background: transparent !important;
+}
+/* Fix 2 v10.3.1: el redondeo quedó bien, pero la derecha seguía sin
+   ser transparente — el link del canal (y los pseudo-elementos del
+   wrapper) tenían su propio fondo uniforme. Se dejan transparentes
+   para que solo quede el gradiente del wrapper. */
+li[class*="containerDefault_"] [class*="link_TNyK-N"],
+li[class*="containerDefault_"] [class*="wrapper_TNyK-N"]::before,
+li[class*="containerDefault_"] [class*="wrapper_TNyK-N"]::after {
+  background: transparent !important;
 }
 
 /* Las insignias (badges) del perfil no se muestran. */
