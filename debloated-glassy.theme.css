@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 10.2.1
+  * @version 10.2.2
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -97,7 +97,13 @@ article.embedWrapper_b7e1cb.embedFlexGrow_b7e1cb.embedFull_XyW1ZT.embed_XyW1ZT.m
 .theme-dark .container_g6VwXp {
   border-radius: inherit;
 }
-.chatContent_z_gUBg {
+/* v10.2.2 (2026-11-19): Bryan: en los DMs la barra de texto no llegaba
+   al borde derecho cuando el perfil de la derecha estaba cerrado.
+   Causa: este max-width reservaba 60px para la lista de miembros
+   colapsada, pero se aplicaba también en DMs (donde no hay lista).
+   El diagnóstico lo confirmó (chatMaxWidth calc(100% - 60px),
+   sin sidebar). Ahora solo se aplica cuando hay lista de miembros. */
+div:has([class*="membersWrap_"]) .chatContent_z_gUBg {
   max-width: calc(100% - 60px);
 }
 .title_z_gUBg {
