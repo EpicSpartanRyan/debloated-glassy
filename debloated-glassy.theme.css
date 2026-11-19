@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 8.9
+  * @version 9.0
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -431,6 +431,17 @@ svg[class*="cursorDefault_"] {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
+}
+
+/* v9.0 (2026-11-19): el puntito verde de los DM en grupo (facepile "Uzi,
+   Sara"): es otro componente distinto al avatar individual — un svg de
+   10×10 (mask_PlwcO5) con un div status_PlwcO5 verde #45a366 y máscara
+   svg-mask-status-online. Se esconde el svg entero; el selector :has()
+   con la máscara es el durable (las clases llevan hash y pueden cambiar
+   en cada build de Discord). */
+[class*="avatar"] svg[class*="mask_PlwcO5"],
+[class*="avatar"] svg:has(> foreignObject[mask*="svg-mask-status-"]) {
+  display: none !important;
 }
 
 /* Nombres de usuario siempre en blanco (sin colores de rol).
