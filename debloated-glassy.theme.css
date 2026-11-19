@@ -1,0 +1,1825 @@
+/**
+  * @name debloated-glassy
+  * @author EpicSpartanRyan
+  * @version 8.6
+  * @description Debloated Discord theme with glassy panels
+*/
+
+.searchBar_u88IQl .searchBarComponent__35e86 {
+  border-radius: 20px;
+}
+.form_z_gUBg .channelTextArea_z_gUBg .scrollableContainer_2x8-Qn {
+  max-height: 45vh;
+}
+.form_z_gUBg:before {
+  display: none;
+}
+.children_ybUK7Z:after {
+  display: none;
+}
+.nowPlayingSidebar-2OFn0o {
+  min-width: 300px;
+  max-width: 300px;
+}
+.container_GNEh_C .scroller_GNEh_C {
+  margin-left: 0;
+  border-left: none;
+}
+.wrapper_o3hXTo {
+  border: none;
+}
+.header_-JvGQh {
+  border-bottom: none;
+}
+.search_bWCaDq {
+  margin-left: 0px;
+}
+.search_bWCaDq {
+  order: -1;
+}
+.searchBar-zdmu7v {
+  width: 28px;
+  transition: width 0.5s ease-in-out;
+}
+.focused-8aNhVB .searchBar-zdmu7v,
+.open-3y3yI_ .searchBar-zdmu7v,
+.searchBar-zdmu7v:hover {
+  width: 150px;
+}
+/* Regla de burbujas del Dark+ original ELIMINADA (v15):
+   ponía 8px de padding invisible alrededor de cada mensaje
+   (el fondo de la burbuja se quitó por lo de no tocar
+   colores, así que el padding era solo espacio vacío), y
+   ese padding era el espacio extra entre mensajes que no
+   quitaban ni el margin 0 ni el QuickCSS. */
+.messageContent_2i8Bfm:empty {
+  display: none !important;
+}
+
+/* Espacio entre mensajes: todo a cero, con los selectores
+   exactos de tu versión (según tu Inspector).
+   El hueco que quedaba vive dentro del mensaje: el
+   contenedor de accesorios (embeds) y el propio embed. */
+[class*="groupStart"] {
+  margin-top: 0 !important;
+}
+[class*="messageListItem"] {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+[class*="wrapper"][class*="cozy"]:not([class*="mentioned"]),
+[class*="wrapper"][class*="compact"]:not([class*="mentioned"]) {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+[class*="messageListItem"] > [class*="message"] {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+[id^="message-accessories"] {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+[class*="embedFull"] {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+article.embedWrapper_b7e1cb.embedFlexGrow_b7e1cb.embedFull_XyW1ZT.embed_XyW1ZT.markup_ku1OHH.justifyAuto_XyW1ZT {
+  width: 432px;
+}
+.markup_ku1OHH blockquote, .markup_ku1OHH pre {
+  max-width: 100%;
+}
+.avatar_2i8Bfm:hover.clickable_2i8Bfm:hover {
+  transform: scale(1.2) rotate(360deg);
+  transition: width 0.5s ease, height 0.5s ease, transform 0.5s ease;
+}
+.theme-dark .container_g6VwXp {
+  border-radius: inherit;
+}
+.chatContent_z_gUBg {
+  max-width: calc(100% - 60px);
+}
+.title_z_gUBg {
+  z-index: 11;
+}
+.members_86es0b,
+.membersWrap_86es0b, .container_86es0b {
+  min-width: 60px;
+  transition-duration: 200ms;
+  transition-property: box-shadow, min-width, width;
+  width: 60px;
+  z-index: 10;
+}
+.members_86es0b:hover,
+.membersWrap_86es0b:hover {
+  min-width: 240px;
+  width: 240px;
+}
+.membersWrap_86es0b {
+  height: 100%;
+  position: absolute;
+  right: 0;
+}
+.membersGroup_86es0b {
+  height: 0;
+  overflow: hidden;
+  transition-duration: 200ms;
+  transition-property: height;
+}
+.members_86es0b:hover .membersGroup_86es0b {
+  height: 40px;
+}
+
+/*.membersWrap_86es0b {
+  min-width: unset;
+}
+.membersWrap_86es0b .members_86es0b {
+  max-width: 65px;
+  min-width: 65px;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.membersWrap_86es0b .members_86es0b:hover {
+  max-width: 240px;
+  min-width: 240px;
+}
+.membersWrap_86es0b .members_86es0b .content-2a4AW9:not(:hover) {
+  padding-top: 10px;
+  background-color: var(--darkplus-bg);
+}
+
+.membersGroup_86es0b {
+  margin-left: 60px;
+  background-color: var(--darkplus-bg);
+  color: var(--darkplus-sec);
+}
+
+.members_86es0b,
+.members_86es0b > div {
+  background-color: var(--darkplus-bg);
+}
+*/
+
+/* old userarea
+.container_g6VwXp {
+  height: 85px;
+}
+.container_g6VwXp .avatarWrapper__37e49 {
+  position: absolute;
+  bottom: 45px;
+}
+
+.container_g6VwXp > .noWrap_HjOfxu {
+  width: 224px;
+  bottom: 5px;
+  position: absolute;
+}
+.container_g6VwXp > .noWrap_HjOfxu button {
+  width: 100%;
+  justify-content: space-evenly;
+}
+*/.background_a9178b {
+  padding: 0;
+  border-radius: 30px;
+}
+.background_a9178b .profile_d6fbe8 {
+  padding: 16px;
+}
+.background_a9178b .fieldList_a9178b {
+  padding: 16px;
+}
+.background_a9178b .constrainedRow_a9178b .button_9OQtot {
+  margin-left: 8px;
+}
+.menu_c8834f {
+  margin-right: 16px;
+  cursor: pointer;
+}
+.jumpToPresentBar_j9Vvzj {
+  border-radius: 20px;
+}
+#permissions-modal-wrapper #permissions-modal {
+  height: 80%;
+}
+#permissions-modal-wrapper .modal-body .perm-side {
+  width: 400px;
+}
+#permissions-modal-wrapper .perm-scroller .perm-item {
+  height: unset;
+}
+#permissions-modal-wrapper .perm-scroller {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: repeat(auto-fill, calc(100% / 17));
+}
+#permissions-modal-wrapper .perm-scroller .perm-name {
+  margin-left: 5px;
+}
+#permissions-modal-wrapper .perm-scroller svg {
+  height: 20px !important;
+  width: 20px !important;
+}
+.avatarUploaderIndicator-2G-aIZ {
+  display: none;
+}
+.button-Jt-tIg {
+  font-weight: bold;
+}
+#bd-pub-button {
+  font-weight: bold;
+}
+#bd-pub-button:hover {
+  font-weight: bold;
+}
+[aria-label="Send a gift" i] {
+  display: none !important;
+}
+.typeWindows_gnMEnp {
+  position: relative;
+}
+.customStatus_g6VwXp {
+  width: 120px;
+}
+.theme-dark .lookOutlined-3yKVGo.colorPrimary-2AuQVo {
+  border-radius: 25px;
+}
+.input__48d49,
+.medium__5b9a9.iconLayout__67261 {
+  border-radius: 10px;
+}
+.searchBar_u88IQl .searchBarComponent__35e86 {
+  border-radius: 10px;
+}
+.menu_M3qk4j, .colorDefault-CDqZdO {
+  border-radius: 15px;
+}
+.panels_pog62O {
+  border: none;
+}
+.chat_fjXxyy .chatContent_z_gUBg, .chat_f8LWmr .chatContent_z_gUBg {
+  max-width: 100%;
+}
+.interactive_nl_k3a .highlighted_TBNqol {
+  width: 100%;
+}
+.panels_pog62O {
+  border: none;
+}
+.visual-refresh .sidebar_pog62O:after {
+  height: 70px;
+  right: 0px;
+}
+.modeMuted_TNyK-N .icon_TNyK-N, .modeMuted_TNyK-N .name_TNyK-N {
+  opacity: .7;
+}
+.embed_v5eeZH {
+  container-type: normal !important;
+}
+
+/* ============================================================
+   ETIQUETAS DE CLAN junto a los nombres (HTZK, OW, LUVR,
+   ADO, BEAR...): ocultarlas, son ruido visual.
+   Se ocultan en la lista de MDs, en mensajes y en la lista
+   de miembros. Solo display, sin colores.
+   (El intento de expandir carpetas con hover se quitó:
+   no funcionó en esta versión de Discord.)
+   En la lista de AMIGOS las etiquetas usan otras clases
+   (chipletContainer / guildTagContainer), no clanTagChiplet:
+   por eso seguían viéndose ahí. v20 las cubre también.
+   ============================================================ */
+[class*="clanTagChiplet" i],
+[class*="clantag_" i],
+[class*="chipletContainer" i],
+[class*="guildTagContainer" i] {
+  display: none !important;
+}
+
+/* Insignia "APP" junto al nombre de los bots: ocultar */
+[class*="botTag" i] {
+  display: none !important;
+}
+
+/* Nameplates: los fondos/imágenes detrás del nombre de
+   algunos usuarios en la lista de miembros (y en mensajes).
+   Se ataca por varios lados porque Discord los pone de
+   formas distintas según el tipo (estático o animado):
+   el contenedor con la imagen de fondo, el estilo en línea
+   con la URL del nameplate, y el vídeo/imagen del asset.
+   Solo quita, no pone ningún color. */
+[class*="nameplated"] div:first-child,
+[class*="nameplated"] [class*="container"] {
+  background: unset !important;
+}
+[style*="nameplate" i] {
+  background-image: none !important;
+}
+[class*="nameplated"] video {
+  display: none !important;
+}
+[poster*="nameplate" i],
+[src*="nameplates" i] {
+  display: none !important;
+}
+
+/* Botón de ayuda (?) de la barra superior: ocultar */
+[aria-label="Help"] {
+  display: none !important;
+}
+
+/* Botón para mostrar/ocultar la lista de miembros: ocultar */
+[aria-label*="Member List"] {
+  display: none !important;
+}
+
+/* Sección Activity en la lista de miembros: ocultar el
+   encabezado y las tarjetas de juegos/música.
+   El encabezado se distingue porque tiene botón de colapsar
+   y ajustes (los grupos de roles no tienen botones).
+   Las tarjetas se detectan por la portada del juego
+   (img.contentImage), que las filas de miembros no tienen.
+   El detector anterior del icono de mando ya no coincide
+   con la versión actual de Discord. */
+[class*="membersGroup"]:has([role="button"]) {
+  display: none !important;
+}
+div[class*="members_"] div > div:has(img[class*="contentImage"]) {
+  display: none !important;
+}
+
+/* Insignia "NEW" de canales nuevos: la clase newBadge ya no
+   existe en esta versión; el badge ahora es un componente
+   genérico (badge_*) dentro de channelInfo, en la lista
+   de canales. Solo se esconde el badge, los iconos de
+   invitar y ajustes al hacer hover siguen intactos. */
+#channels div[class*="channelInfo_"] div[class*="badge_"] {
+  display: none !important;
+}
+
+/* Botón Discover (brújula) en la lista de servidores: ocultar */
+[aria-label="Discover"] {
+  display: none !important;
+}
+
+/* Botones GIF y emoji de la barra de mensaje: ocultar.
+   Se queda solo el de stickers, cuyo menú ya permite
+   cambiar entre GIF, emojis y stickers.
+   El de emoji no trae el aria-label clásico en esta
+   versión, así que también se detecta por su clase
+   interna (emojiButton) dentro del botón del picker. */
+[aria-label="open gif picker" i],
+[aria-label="Select emoji" i],
+[aria-label="open emoji picker" i],
+div[class*="expression-picker-chat-input-button"]:has(div[class*="emojiButton"]),
+[class*="channelTextArea"] [class*="emojiButton"] {
+  display: none !important;
+}
+
+/* Puntos de estado en los avatares (verde = en línea,
+   amarillo = ausente, rojo = no molestar, gris = sin
+   conexión, morado = transmitiendo): ocultar todos.
+   El punto es un rect/círculo dentro del SVG del avatar
+   cuya máscara es svg-mask-status-*; al quitarlo también
+   se quita el hueco que la máscara recorta en el avatar,
+   para que el avatar quede redondo completo. */
+svg rect[mask^="url(#svg-mask-status-"],
+svg circle[mask^="url(#svg-mask-status-"] {
+  display: none !important;
+}
+mask[id^="svg-mask-avatar-status"] > :not([fill="white"]) {
+  display: none !important;
+}
+
+/* Nombres de usuario siempre en blanco (sin colores de rol).
+   Excepción pedida por Bryan: no le gusta la distinción
+   entre moderadores, VIP, etc. El color del rol viene como
+   estilo en línea, así que hace falta !important. */
+[class*="username"],
+[class*="member"] [class*="name_"] {
+  color: #ffffff !important;
+}
+
+/* Fecha del divisor de día: ocultar toda la etiqueta
+   (la línea queda). El año va pegado a la fecha en el
+   mismo texto, así que con CSS solo se puede quitar
+   la etiqueta entera. v17 añade el selector por clase,
+   según el Inspector (span.content_4TfzT5 dentro del
+   divider con hasContent). */
+div[data-list-item-id^="chat-messages__divider-"] [class*="content"],
+div[class*="divider"][class*="hasContent"] span[class*="content"] {
+  display: none !important;
+}
+
+/* Nitro, Shop, Family Center y Quests: ocultar de la
+   lista de mensajes directos (son enlaces a /store,
+   /shop, /family-center y /quests). */
+[href="/store"], [href="/shop"], [href="/family-center"], [href="/quests"],
+li:has([href="/store"]), li:has([href="/shop"]), li:has([href="/family-center"]), li:has([href="/quests"]) {
+  display: none !important;
+}
+
+/* Quests: no es un enlace (no tiene href), es un li con
+   clases propias de Quest Home (según el Inspector). */
+li[class*="withQuestHomeHeroContent"],
+li[class*="withGradient"] {
+  display: none !important;
+}
+
+/* Insignias de no leídos/menciones: solo el círculo rojo,
+   sin el número (font-size 0 esconde el texto; ancho y
+   alto fijos en 16px lo dejan redondo). */
+[class*="numberBadge"] {
+  font-size: 0 !important;
+  padding: 0 !important;
+  min-width: 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* ACTIVE NOW: solo la parte de arriba de cada tarjeta.
+   La sección de abajo (detalles del juego/canal) se oculta;
+   las tarjetas quedan con fondo glassy (translúcido + blur)
+   para que se vea el fondo, y el panel un poco más compacto.
+   (El fondo glassy es a pedido de Bryan, como los nombres
+   en blanco: es la única excepción de color/transparencia.) */
+[class*="nowPlayingColumn"] section[class*="section_"],
+header[class*="headerFull"] ~ section[class*="section_"] {
+  display: none !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"],
+[class*="itemCard"]:has([class*="headerFull"]) {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+}
+[class*="headerFull"] {
+  background: transparent !important;
+  padding: 12px !important;
+}
+[class*="nowPlayingColumn"] {
+  flex-basis: 320px !important;
+  width: 320px !important;
+  min-width: 320px !important;
+  max-width: 320px !important;
+}
+[class*="nowPlayingColumn"] [class*="scrollerBase"] {
+  padding: 4px 6px 12px !important;
+}
+
+/* Botón Gift (regalar Nitro) en la lista de amigos.
+   Según el Inspector es button.button_F7qvhY.sm_F7qvhY
+   .primary_F7qvhY.hasText_F7qvhY, fondo #5865F2, nombre
+   accesible "Gift" (sin aria-label y sin clase giftButton;
+   por eso el v23 no lo pescó: usaba colorBrand, que ya
+   no existe en este botón). Es el único botón primary
+   dentro de una fila de amigo; el "Add Friend" del
+   encabezado no está en una fila, así que no se toca. */
+[class*="peopleListItem"] button[class*="primary"] {
+  display: none !important;
+}
+
+/* División roja de "mensajes nuevos" (NEW): ocultar la
+   línea y la pastilla, en DMs y servidores. */
+[class*="divider"][class*="isUnread"],
+[class*="unreadPill"] {
+  display: none !important;
+}
+
+/* Popup de acciones al pasar el mouse sobre un mensaje
+   (reacciones, responder, más): SOLO la pastilla es glassy.
+   La banda ancha era el contenedor exterior (buttons) con su
+   propio fondo glassy, más el borde y la sombra de la pastilla
+   (buttonsInner_SY_P2T, 210x33, radio 8px), y se veían dos
+   rectángulos. Ahora el exterior es transparente. */
+[class*="buttonContainer"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+[class*="buttonContainer"] > [class*="buttons"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+[class*="buttonContainer"] [class*="buttonsInner"] {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Tooltips (los que salen al pasar el mouse por las opciones,
+   como "Click to react"): fondo glassy. El fondo es más denso
+   (0.25 en vez de 0.08) para que el tooltip ya se vea desde el
+   primer momento, antes de que el blur termine de calcularse. */
+[class*="tooltip_"] {
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(10px) !important;
+}
+[class*="tooltipContent"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+/* La flechita del tooltip (es un div.caret_q722L8, no
+   tooltipPointer): no se muestra. */
+[class*="tooltip"] [class*="caret"] {
+  display: none !important;
+}
+
+/* Menús contextuales (clic derecho en un mensaje) y sus
+   submenús (como "Remind Me"): fondo glassy, igual que la
+   barra y los tooltips. */
+[class*="menu_"],
+[role="menu"] {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+}
+[class*="menu_"] [class*="scroller"],
+[role="menu"] [class*="scroller"] {
+  background: transparent !important;
+}
+
+/* Al pasar el mouse por un amigo, su fondo animado (el banner
+   de su perfil) no se muestra. */
+[class*="popout" i] [class*="banner"],
+[class*="popover" i] [class*="banner"] {
+  display: none !important;
+}
+
+/* El fondo del amigo (su banner) que aparece en la fila del DM
+   al pasar el mouse: no se muestra. Es el contenedor
+   container_AFi54G / fadeIn dentro de la fila del DM (no es el
+   banner del popout, que ya se ocultó en v32). */
+li[class*="dm_"] [class*="fadeIn"],
+[class*="container_AFi54G"] {
+  display: none !important;
+}
+
+/* Perfil de usuario en la barra lateral derecha: fondo glassy
+   siempre (en vez del fondo oscuro). */
+aside:has([class*="user-profile-sidebar"]) {
+  background: transparent !important;
+}
+[class*="user-profile-sidebar"] {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+}
+[class*="user-profile-sidebar"] > [class*="inner"],
+[class*="user-profile-sidebar"] [class*="scroller"],
+[class*="user-profile-sidebar"] [class*="header_"],
+[class*="user-profile-sidebar"] [class*="body_"],
+[class*="user-profile-sidebar"] [class*="redesignFooter"] {
+  background: transparent !important;
+}
+/* El banner del perfil (arriba) no muestra su color/imagen:
+   queda transparente para que todo el panel sea glassy. */
+[class*="user-profile-sidebar"] [class*="banner"] {
+  background: transparent !important;
+  background-image: none !important;
+}
+[class*="user-profile-sidebar"] [class*="banner"] img {
+  display: none !important;
+}
+
+/* Las tarjetas dentro del perfil (actividad, wishlist,
+   reseñas): fondo glassy también, no solo el panel. */
+[class*="user-profile-sidebar"] [class*="overlay"] {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Las insignias (badges) del perfil no se muestran. */
+[aria-label="User Badges"],
+[class*="container_IqWmhA"] {
+  display: none !important;
+}
+
+/* El circulito oscuro detrás del indicador de estado del avatar
+   (quedó visible al esconder los puntos de estado en v13):
+   no se muestra. */
+[class*="avatar"] svg circle[fill="black"],
+svg:has(foreignObject[mask*="svg-mask-avatar-status"]) > circle {
+  display: none !important;
+}
+
+/* Las animaciones que el usuario pone en su perfil
+   (efecto de perfil, banner animado, nombre animado):
+   no se muestran. */
+[class*="user-profile-sidebar"] [class*="profileEffects"] {
+  display: none !important;
+}
+[class*="has-animated-banner"] [class*="banner"],
+[class*="user-profile-sidebar"] [class*="banner"] {
+  background-image: none !important;
+  background-color: transparent !important;
+  animation: none !important;
+}
+[class*="displayName"][class*="animated"],
+[class*="displayName"][class*="loop"] {
+  animation: none !important;
+}
+
+/* El marco de perfil (el borde decorativo que algunos
+   usuarios ponen alrededor de su perfil): no se muestra. */
+[class*="profileFrame"] {
+  display: none !important;
+}
+
+/* Las decoraciones de avatar (los marcos/dibujos que algunos
+   usuarios ponen encima de su foto de perfil): no se muestran. */
+[class*="avatarDecoration"] {
+  display: none !important;
+}
+
+/* Los emojis en los nombres (lista de DMs, miembros, chat,
+   perfil): no se muestran. */
+[class*="name_"] [class*="emoji"],
+[class*="username"] [class*="emoji"],
+[class*="displayName"] [class*="emoji"] {
+  display: none !important;
+}
+
+/* Los puntitos blancos de no leído en la lista de servidores
+   (el "pill" al lado del icono): no se muestran. */
+[class*="listItem"] span[class*="item__"] {
+  display: none !important;
+}
+
+/* Los iconos de tipo de canal en la lista de canales
+   (el # de texto y la bocina de voz): no se muestran. */
+[class*="linkTop"] [class*="iconContainer"] {
+  display: none !important;
+}
+
+/* Un pequeño espaciado a la derecha para los nombres de canal
+   (compensa el icono que se quitó). */
+#channels [class*="linkTop"] [class*="name_"] {
+  margin-left: 8px !important;
+}
+
+/* Las fuentes custom en los nombres (Display Name Styles):
+   todos usan la fuente normal. */
+[class*="dnsFont"], [class*="dnsFont"] * {
+  font-family: inherit !important;
+}
+
+/* El scroll (la barrita): solo se renderiza cuando el mouse está
+   sobre la región desplazable; fuera de ella, es invisible.
+   En lugar de gris: blanco glassy más denso. */
+[class*="scroller"]::-webkit-scrollbar-thumb {
+  background: transparent !important;
+  border-radius: 999px !important;
+}
+[class*="scroller"]:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.35) !important;
+}
+[class*="scroller"]:hover::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Amigos y Active Now: sombra inferior ELIMINADA en v7.5 (2026-11-18).
+   Bryan pidió quitar las sombras de abajo (el degradado oscuro de 64px
+   en la parte inferior de la lista de amigos y de Active Now, v5.5/v5.6).
+   Se quitó todo el bloque (position: relative + ::after). */
+
+/* El puntito blanco de notificación en los canales
+   (canal con mensajes no leídos): no se muestra. */
+#channels [class*="unread_"] {
+  display: none !important;
+}
+
+/* Los tooltips: sin fundido de entrada (aparecen de inmediato).
+   El fundido no era la causa del transparente-a-glassy; eso lo
+   arregla el fondo más denso de arriba (el blur tarda un momento
+   en calcularse y con el fondo 0.08 el tooltip se veía transparente). */
+[class*="tooltip_"] {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* En cada fila de amigos: solo se esconden el botón de Mensaje
+   (el globo) y el de Más opciones (los tres puntos), que son
+   redundantes (la fila ya abre el DM). El botón de GIF y el de
+   Cancelar solicitud se dejan, porque esos sí hacen falta. */
+[class*="peopleListItem"] [aria-label^="Message"],
+[class*="peopleListItem"] [aria-label^="More options"] {
+  display: none !important;
+}
+
+/* Los subtextos de estado en cada fila de amigos (Online, Idle,
+   Do Not Disturb, el juego que juegan, su estado personal):
+   no se muestran, solo queda el nombre. */
+[class*="peopleListItem"] [class*="subtext_"] {
+  display: none !important;
+}
+
+/* El texto de ayuda ("Message @Makki") en el cuadro de mensaje:
+   no se muestra, es redundante. */
+[class*="emptyText"]::before,
+[class*="channelTextArea"] [class*="placeholder_"] {
+  display: none !important;
+}
+
+/* La actividad en la lista de DMs (el juego que juegan):
+   no se muestra, para eso ya está Active Now a la derecha. */
+li[class*="dm_"] [class*="subText_"] {
+  display: none !important;
+}
+
+/* El título "Friends" de la página de amigos: no se muestra,
+   es redundante (ya se sabe que estás en Amigos). */
+[aria-label="Friends"] [class*="titleWrapper_"] {
+  display: none !important;
+}
+
+/* Las flechitas de opciones de entrada/salida de audio (junto al
+   micrófono y a los audífonos) en el panel de abajo a la izquierda:
+   no se muestran, para compactar el panel. */
+[aria-label="Input Options"],
+[aria-label="Output Options"] {
+  display: none !important;
+}
+
+/* Mi propio estado en el panel de abajo a la izquierda ("Online"):
+   no se muestra, no tiene sentido ver mi propio estado. */
+[class*="panelSubtextContainer_"] {
+  display: none !important;
+}
+
+/* El placeholder "Search" de la barra de búsqueda de amigos:
+   no se muestra, con solo ver la lupa se entiende. */
+[class*="searchBar"] input::placeholder {
+  color: transparent !important;
+}
+
+/* El selector de expresiones (stickers/GIFs/emoji): fondo glassy. */
+[aria-label="Expression Picker"] [class*="contentWrapper"] {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+}
+[aria-label="Expression Picker"],
+[aria-label="Expression Picker"] [class*="drawerSizingWrapper"],
+[aria-label="Expression Picker"] [class*="nav_"],
+[aria-label="Expression Picker"] [role="tabpanel"],
+[aria-label="Expression Picker"] [class*="inspector_"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+/* El riel de categorías de la izquierda: eliminado entero. */
+[aria-label="Expression Picker"] [class*="categoryList_"] {
+  display: none !important;
+}
+
+/* Reclamar el espacio del riel eliminado: la cuadrícula
+   ocupa todo el ancho, sin el hueco de la izquierda. */
+[aria-label="Expression Picker"] [role="tabpanel"] {
+  grid-template-columns: 1fr !important;
+}
+[aria-label="Expression Picker"] [class*="listWrapper_WSRqCO"],
+[aria-label="Expression Picker"] [class*="emojiPickerListWrapper"],
+[aria-label="Expression Picker"] [class*="wrapper_dCw_12"],
+[aria-label="Expression Picker"] [class*="listWrapper_dCw_12"],
+[aria-label="Expression Picker"] [class*="listWrapper_6c9R7U"],
+[aria-label="Expression Picker"] [class*="bodyWrapper_-sZhZn"] {
+  grid-column: 1 / -1 !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* El buscador del selector de expresiones: más glassy/blanco,
+   también cuando está enfocado. */
+[aria-label="Expression Picker"] [class*="header_WSRqCO"],
+[aria-label="Expression Picker"] [class*="header_rfDq2B"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+[aria-label="Expression Picker"] [class*="container_0PLWhS"],
+[aria-label="Expression Picker"] [class*="container_0PLWhS"]:focus-within {
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 8px !important;
+}
+[aria-label="Expression Picker"] [class*="container_0PLWhS"] input {
+  background: transparent !important;
+}
+
+/* Los encabezados de categoría (Favorites, Frequently Used,
+   LA CASA DE LA MICKEY MOUSE): más glassy/blancos. */
+[aria-label="Expression Picker"] [class*="header_kSdzCr"] {
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 8px !important;
+}
+[aria-label="Expression Picker"] [class*="wrapper_kSdzCr"],
+[aria-label="Expression Picker"] [class*="packHeader_"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+/* Las carpetas de servidores: efecto glassy/difuminado,
+   para menor ruido visual. */
+[class*="folderButtonInner"] {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+}
+[class*="folderPreview"] {
+  filter: blur(2px) !important;
+  opacity: 0.85 !important;
+}
+
+/* La píldora "New Unreads" al final de la lista de canales: glassy. */
+[class*="bar_t1P8Sn"] {
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Los botones del panel inferior izquierdo (Mute, Deafen,
+   Ajustes): más juntos. */
+[class*="buttons_g6VwXp"] {
+  gap: 2px !important;
+}
+[class*="buttons_g6VwXp"] [class*="audioButtonParent"],
+[class*="buttons_g6VwXp"] > button {
+  margin: 0 !important;
+}
+
+/* El encabezado "Active Now" encima de la columna: eliminado. */
+[class*="header_GNEh_C"] {
+  display: none !important;
+}
+
+/* El icono de amigos y el punto separador del encabezado
+   de la página de Amigos: eliminados. */
+[aria-label="Friends"] [class*="iconWrapper_ybUK7Z"],
+[aria-label="Friends"] [class*="dot_ybUK7Z"] {
+  display: none !important;
+}
+
+/* Tu propio nombre en el panel inferior izquierdo: eliminado
+   (el subtexto de estado ya estaba oculto desde v57).
+   El avatar sigue ahí y sigue abriendo tu perfil al hacer clic. */
+[class*="nameTag_g6VwXp"] {
+  display: none !important;
+}
+
+/* El encabezado "Direct Messages" encima de la lista de DMs
+   (texto + botón de más opciones + botón de crear mensaje):
+   eliminado. */
+[class*="privateChannelsHeaderContainer_"] {
+  display: none !important;
+}
+
+/* El popout de perfil (el que sale al hacer clic en un avatar):
+   glassy, igual que el panel lateral de perfil (v34/v35). */
+[class*="user-profile-popout"] {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+}
+[class*="user-profile-popout"] > [class*="inner"],
+[class*="user-profile-popout"] [class*="header_"],
+[class*="user-profile-popout"] [class*="body_"],
+[class*="user-profile-popout"] [class*="section_"] {
+  background: transparent !important;
+}
+[class*="user-profile-popout"] [class*="banner"] {
+  background: transparent !important;
+  background-image: none !important;
+}
+[class*="user-profile-popout"] [class*="banner"] img {
+  display: none !important;
+}
+[class*="user-profile-popout"] [class*="overlay"] {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* El cuadro "Amp up your profile" (Get Nitro / Shop): eliminado
+   por completo. Ya no se hace glassy, se quita. */
+[class*="upsellContainer"] {
+  display: none !important;
+}
+
+/* El texto de placeholder "Search ..." en la barra de búsqueda
+   del encabezado del DM: eliminado. La barra sigue funcionando,
+   solo queda vacía hasta que escribas. */
+[class*="searchBar_"] [data-slate-placeholder] {
+  display: none !important;
+}
+
+/* El prompt de "Add custom status" ("+ Shower thought?",
+   "Favorite NPC companion?") en el popout de perfil:
+   eliminado. Incluye tanto el botón editable como la
+   versión de referencia, que muestran el mismo prompt. */
+[class*="container_rmCN9_"],
+[class*="referenceContainer_rmCN9_"] {
+  display: none !important;
+}
+
+/* Los botones "Badges" (3er item) y "0 Orbs" (4to item) del
+   menú del popout de perfil: eliminados. Quedan Edit Profile,
+   Online, Switch Accounts y Copy User ID. */
+[class*="user-profile-popout"] [class*="menuOverlay_"] ul li:nth-child(3),
+[class*="user-profile-popout"] [class*="menuOverlay_"] ul li:nth-child(4) {
+  display: none !important;
+}
+
+/* El botón "Edit Profile" del popout: eliminado. Hacer clic en
+   el avatar abre el perfil completo, que tiene el mismo efecto.
+   Es el primer item del primer menú (el segundo menú empieza
+   con "Switch Accounts", así que no se toca). La regla v81 por
+   la insignia "NEW" ya no funcionaba: Discord quitó esa insignia. */
+[class*="user-profile-popout"] [class*="menus_"] [class*="menuOverlay_"]:first-of-type ul li:first-child {
+  display: none !important;
+}
+
+/* La fila de usuario en el popout (nombre de usuario
+   "epicspartanryan" + tag de clan + badges): eliminada.
+   El nombre para mostrar ya está arriba. */
+[class*="user-profile-popout"] [class*="usernameAndPronounsRow_"] {
+  display: none !important;
+}
+
+/* El encabezado del popout de perfil, un 40% más bajo:
+   el banner pasa de 105px a 63px, así el encabezado queda
+   en ~84px (antes 140px).
+   Corrección v84: en v83 solo se achicó el avatar, la tarjeta
+   no se achicó porque el encabezado y el banner tienen una
+   altura mínima propia; ahora se fija la altura del encabezado
+   y el mínimo del banner explícitamente.
+   Corrección v85: el avatar vuelve a su tamaño original (80px).
+   Solo el banner y el encabezado quedan más bajos; el avatar
+   ya no se achica. */
+[class*="user-profile-popout"] [class*="banner_vNEdYY"] {
+  height: 63px !important;
+  min-height: 63px !important;
+}
+[class*="user-profile-popout"] [class*="header_NOlkhE"] {
+  height: 84px !important;
+  min-height: 84px !important;
+}
+
+/* El avatar del popout, un 55% más arriba para que no se
+   encime con el nombre (la tarjeta es más baja pero el avatar
+   volvió a su tamaño original de 80px). */
+[class*="user-profile-popout"] [class*="avatar_WRLIGC"] {
+  transform: translateY(-55%) !important;
+}
+
+/* Tarjetas de Active Now: quitar el texto de actividad de
+   abajo (p. ej. "Minecraft – 3h"), dejando solo el nombre;
+   y hacer el icono de la derecha un 33% más grande. */
+[class*="nowPlayingColumn"] [class*="headerFull"] [class*="clickable_"] [class*="textContent_"] {
+  display: none !important;
+}
+[class*="nowPlayingColumn"] [class*="headerIcon_"] {
+  transform: scale(1.33) !important;
+}
+
+/* Inbox glassy: el panel de Inbox (Unreads/Mentions/Bookmarks/
+   Reminders/Scheduled) tenía fondo sólido; ahora es glassy
+   como el resto de paneles. */
+[aria-label="Inbox"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+[aria-label="Inbox"] [class*="container_uTMZTY"] {
+  background: rgba(255,255,255,0.08) !important;
+  backdrop-filter: blur(10px) !important;
+}
+[aria-label="Inbox"] [class*="header_LSviKk"],
+[aria-label="Inbox"] [class*="headerTitle_LSviKk"],
+[aria-label="Inbox"] [class*="headerTabs_LSviKk"],
+[aria-label="Inbox"] [class*="tabBar_LSviKk"],
+[aria-label="Inbox"] [class*="scroller_0JZW4Z"],
+[aria-label="Inbox"] [class*="box_0JZW4Z"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+/* Inbox: las cabeceras de canal (las franjas de cada canal
+   no leído, p. ej. "# ✌-bienvenidos") tenían fondo sólido
+   (azul claro / oscuro); ahora son glassy como el resto. */
+[aria-label="Inbox"] [class*="headerContainer_8ZcKCk"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+[aria-label="Inbox"] [class*="channelHeader_8ZcKCk"] {
+  background: rgba(255,255,255,0.08) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Barra de acciones del adjunto (Spoiler / Modificar / Eliminar)
+   glassy: tenía fondo sólido azul claro. */
+[class*="actionBarContainer_"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+[class*="actionBar_JyxBSo"] {
+  background: rgba(255,255,255,0.08) !important;
+  backdrop-filter: blur(10px) !important;
+}
+[class*="actionBar_JyxBSo"] [class*="wrapper_"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+/* Pinned Messages glassy: el panel de mensajes fijados tenía
+   fondo sólido azul claro; ahora es glassy como el resto. */
+[aria-label="Pinned Messages"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+[aria-label="Pinned Messages"] [class*="messagesPopoutWrap_"] {
+  background: rgba(255,255,255,0.08) !important;
+  backdrop-filter: blur(10px) !important;
+}
+[aria-label="Pinned Messages"] [class*="header_6bgemo"],
+[aria-label="Pinned Messages"] [class*="messagesPopout_6bgemo"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+/* Pinned Messages: cada mensaje fijado (su tarjeta oscura)
+   también es glassy ahora, no solo el panel. */
+[aria-label="Pinned Messages"] [class*="messageGroupWrapper_"] {
+  background: rgba(255,255,255,0.08) !important;
+  backdrop-filter: blur(10px) !important;
+}
+[aria-label="Pinned Messages"] [class*="messageGroupCozy_"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+/* Desplegable de filtros del buscador glassy: el panel de
+   Filters / History tenía fondo sólido oscuro. */
+[class*="container_cbVzxY"] {
+  background: rgba(255,255,255,0.08) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* ============ DMs simples: nombre y fecha solo al hover ============ */
+/* El nombre y la fecha SIGUEN ahí (ocupan su espacio, así el
+   primer mensaje no se recorre arriba ni queda padding raro),
+   pero son invisibles hasta pasar el mouse sobre el mensaje.
+   Sirve en TODOS los DMs: el alcance ya no depende de la intro
+   del DM (que se descarga al bajar en chats largos), sino del
+   nombre de la lista de mensajes — en DMs es
+   "Messages in <amigo>", en servidores es "Messages in #canal". */
+ol[class*="scrollerInner_"]:has(> div[class*="container_w6h4R2"]) [class*="header_2i8Bfm"],
+ol[aria-label^="Messages in "]:not([aria-label*="Messages in #"]) [class*="header_2i8Bfm"] {
+  visibility: hidden !important;
+}
+ol[class*="scrollerInner_"]:has(> div[class*="container_w6h4R2"]) [class*="latin24CompactTimeStamp_"],
+ol[aria-label^="Messages in "]:not([aria-label*="Messages in #"]) [class*="latin24CompactTimeStamp_"] {
+  visibility: hidden !important;
+}
+/* Al pasar el mouse sobre el mensaje, el nombre y la hora
+   vuelven a verse. */
+ol[class*="scrollerInner_"]:has(> div[class*="container_w6h4R2"]) [class*="message_"]:hover [class*="header_2i8Bfm"],
+ol[aria-label^="Messages in "]:not([aria-label*="Messages in #"]) [class*="message_"]:hover [class*="header_2i8Bfm"],
+ol[class*="scrollerInner_"]:has(> div[class*="container_w6h4R2"]) [class*="message_"]:hover [class*="latin24CompactTimeStamp_"],
+ol[aria-label^="Messages in "]:not([aria-label*="Messages in #"]) [class*="message_"]:hover [class*="latin24CompactTimeStamp_"] {
+  visibility: visible !important;
+}
+
+/* ============ Active Now: "Listening to Spotify" fuera ============ */
+/* El texto de actividad en las tarjetas ("Listening to Spotify")
+   no va dentro de un clickable como el de los juegos (v88), así
+   que la regla de v88 no lo agarraba. Este es body-sm/normal
+   (chico), mientras el nombre es body-md/semibold (grande),
+   así que solo se esconde la actividad y el nombre queda. */
+[class*="nowPlayingColumn"] [class*="headerFull"] [class*="textContent_"][class*="body-sm"] {
+  display: none !important;
+}
+
+/* ============ Lista de amigos: título de sección fuera ============ */
+/* El encabezado "Online — 18" (y cualquier otro título de
+   sección de la lista de amigos, como "Offline"). */
+[class*="sectionTitle_wVFOQW"] {
+  display: none !important;
+}
+
+/* ============ Tópico del canal: escondido, aparece con hover ============ */
+/* El texto del tópico del canal (debajo del nombre, p. ej. los
+   comandos del bot de música: M!p, M!s, M!pause...) está
+   escondido por defecto y solo aparece al pasar el mouse por
+   la barra superior del canal. Se usa opacity (no display:none)
+   para que el layout no se mueva al aparecer/desaparecer. */
+section[class*="title_"] [class*="topic_"] {
+  opacity: 0 !important;
+  transition: opacity 0.25s ease !important;
+}
+section[class*="title_"]:hover [class*="topic_"],
+section[class*="title_"] [class*="topic_"]:hover {
+  opacity: 1 !important;
+}
+
+/* ============ Panel de voz: solo 4 elementos fuera ============ */
+/* Solo estos 4. El resto del panel de voz se queda: el ping,
+   Disconnect, Compartir pantalla y Actividades siguen ahí. */
+[class*="labelWrapper_4LJE6I"] {
+  display: none !important;
+}
+button[aria-label="Noise Suppression powered by Krisp"] {
+  display: none !important;
+}
+[class*="actionButtons_"] > button:first-child {
+  display: none !important;
+}
+/* El Soundboard va dentro de un div; se esconde el div entero
+   para que no deje una celda vacía en la rejilla. */
+[class*="actionButtons_"] > div {
+  display: none !important;
+}
+/* La fila era una rejilla de 4 columnas; con 2 botones fuera,
+   queda de 2 para que Compartir pantalla y Actividades llenen
+   el ancho sin hueco a la derecha. */
+[class*="actionButtons_"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+/* ============ Miniatura de stream (PiP): limpia ============ */
+/* Arriba a la izquierda: la flecha de volver a teatro y el
+   título del stream que tiene a su derecha. */
+[class*="pictureInPictureWindow_"] [class*="headerTitle_"] {
+  display: none !important;
+}
+/* Abajo a la izquierda: el nombre del participante. */
+[class*="pictureInPictureWindow_"] [class*="participantName_"] {
+  display: none !important;
+}
+/* Abajo a la derecha: el ojo con la cantidad de viewers. Los
+   botones de Pop Out y Dejar de ver se quedan. */
+[class*="pictureInPictureWindow_"] [class*="viewers_"] {
+  display: none !important;
+}
+
+/* ============ Vista de streams: sin estado de mute ============ */
+/* En las tarjetas de stream, el icono de muteado/ensordecido
+   de abajo a la izquierda. El botón de opciones (...) se queda. */
+[class*="overlayIconsContainer_"] {
+  display: none !important;
+}
+
+/* ============ Vista de stream: sin botón de Soundboard ============ */
+/* El botón de Soundboard de la barra de controles del stream.
+   Se esconde el botón y su contenedor para no dejar hueco. */
+button[aria-label="Open Soundboard"] {
+  display: none !important;
+}
+[class*="attachedCaretButtonContainer_"]:has(button[aria-label="Open Soundboard"]) {
+  display: none !important;
+}
+
+/* El botón de la cámara de la barra de controles del stream.
+   Se esconde el botón y su contenedor para no dejar hueco. */
+button[aria-label*="Camera" i] {
+  display: none !important;
+}
+[class*="attachedCaretButtonContainer_"]:has(button[aria-label*="Camera" i]) {
+  display: none !important;
+}
+
+/* ============ Vista de stream: sin botón de zoom ============ */
+/* El botón de zoom de la tarjeta del stream. Se esconde el
+   botón y su contenedor para no dejar hueco. */
+button[aria-label*="Zoom" i] {
+  display: none !important;
+}
+[class*="overlayButtonContainer_"]:has(button[aria-label*="Zoom" i]) {
+  display: none !important;
+}
+
+/* ============ Vista de stream: barra superior limpia ============ */
+/* Arriba: se quita todo menos el botón de chat de arriba a la
+   derecha. Se esconde el lado izquierdo (título del canal y
+   "tigretito's Screen"), los avatares de viewers y el indicador
+   de calidad (1080p 60FPS + Live). El botón de Show Chat queda. */
+[class*="topControls_"] [class*="headerBarChildren_"] {
+  display: none !important;
+}
+[class*="topControls_"] [class*="viewers_"] {
+  display: none !important;
+}
+[class*="topControls_"] [class*="streamQualityIndicator_"] {
+  display: none !important;
+}
+
+/* ============ Miembros: Offline oculto cuando está retraído ============ */
+/* Cuando el panel de miembros está retraído (sin hover), la
+   sección Offline no se renderiza: ni el encabezado Offline
+   ni los miembros offline. Al expandir con hover, todo vuelve. */
+.members_86es0b:not(:hover) [class*="offline_"],
+.membersWrap_86es0b:not(:hover) [class*="offline_"] {
+  display: none !important;
+}
+.members_86es0b:not(:hover) h3[class*="membersGroup_"]:has(+ [class*="offline_"]),
+.membersWrap_86es0b:not(:hover) h3[class*="membersGroup_"]:has(+ [class*="offline_"]) {
+  display: none !important;
+}
+
+/* ============ Servidores: barra lateral colapsada a 10px, se expande con hover ============ */
+/* v5.3: la barra de servidores (izquierda, iconos) queda colapsada
+   a solo 10px de ancho. Al hacer hover sobre esa franja, se expande
+   a su ancho normal (72px) con una transición suave. Al quitar el
+   mouse, vuelve a colapsarse. Aplica a todo el nav (iconos, carpetas,
+   botón +, Discover). */
+nav[class*="guilds_"] {
+  width: 10px !important;
+  min-width: 10px !important;
+  max-width: 10px !important;
+  overflow: hidden !important;
+  transition: width 0.2s ease-out, min-width 0.2s ease-out, max-width 0.2s ease-out !important;
+}
+nav[class*="guilds_"]:hover {
+  width: 72px !important;
+  min-width: 72px !important;
+  max-width: 72px !important;
+}
+
+/* ============ Spotify: info y tiempos ocultos, barra y controles visibles ============ */
+/* Al reproducir en Spotify (Vencord), se oculta la parte de
+   arriba del reproductor: portada + título + artista + álbum,
+   y los indicadores de tiempo (actual y duración total).
+   La barra de progreso y los controles (shuffle, anterior,
+   play, siguiente, repeat) se quedan visibles. */
+#vc-spotify-info-wrapper,
+.vc-spotify-progress-time {
+  display: none !important;
+}
+
+/* ============ Active Now: las tarjetas de Quest como las demás ============ */
+/* La tarjeta de Quest ("Claim 700 Orbs", "Accept Quest") se veía
+   expandida y distinta a las demás tarjetas de Active Now. Se
+   oculta solo su cuerpo expandido y queda únicamente la fila
+   compacta: avatar + nombre + "Playing a Quest" + icono, igual
+   que el resto de tarjetas. */
+[class*="questCardContextMenuTrigger_"] [class*="body_o3hXTo"] {
+  display: none !important;
+}
+
+/* La tarjeta de Quest también lleva el efecto glassy: el fondo
+   oscuro del wrapper/header de la Quest tapaba el glassy de la
+   tarjeta, así que se dejan transparentes para que se vea el
+   glassy de la .itemCard, igual que sus vecinas. */
+[class*="questCardContextMenuTrigger_"],
+[class*="questCardContextMenuTrigger_"] [class*="headerFull_"] {
+  background: transparent !important;
+}
+
+/* ============ Spotify: slider en blanco, a juego con el glassy ============ */
+/* El slider de Spotify (azul claro + verde oscuro) desentonaba con
+   el panel morado. Ahora va en blanco/translúcido, a juego con el
+   efecto glassy del tema: relleno blanco, pista translúcida y
+   agarradera blanca. El color de la pista va en la barra (el riel
+   delgado de ancho completo), no en el track: el track es el área
+   de puntero, alta, y pintarla dejaba un rectángulo rosa detrás
+   del slider, así que queda transparente. */
+#vc-spotify-progress-bar [class*="barFill_"] {
+  background: #ffffff !important;
+}
+#vc-spotify-progress-bar [class*="bar_"]:has(> [class*="barFill_"]) {
+  background: rgba(255, 255, 255, 0.25) !important;
+}
+#vc-spotify-progress-bar [class*="track_"] {
+  background: transparent !important;
+}
+#vc-spotify-progress-bar [class*="grabber_"] {
+  background: #ffffff !important;
+}
+
+/* ============ GTA Hexagon: gradiente con dithering real ============ */
+/* REVERSIÓN v5.1 (2026-11-17 ~22:48 CST): se quita TODO el trabajo
+   de fondo (v3.7–v5.0: overlay de ruido, PNG con dithering, base64).
+   El archivo de 443KB/149KB no cargaba en Vesktop
+   (net::ERR_UNEXPECTED) y la gradiente nunca cambió; Bryan pidió
+   volver al estado previo al fondo. El tema vuelve a usar la
+   gradiente propia de Discord (Hexagon) sin tocarla. Todo lo demás
+   (debloated, glassy, Spotify, etc.) queda intacto. */
+
+/* ============ Fondo: gradiente bn512+floyd ORIGINAL (gradients/04.png) v6.4 ============ */
+/* v6.4 (2026-11-18): Bryan confirmó que el host NO es el problema — con
+   la v6.3-TEST (imagen imgur de NAAT) la franja de arriba y la franja
+   delgada de la izquierda SÍ cambian, o sea la imagen SÍ pinta en el
+   appMount, pero el área principal sigue negra. Conclusión: hay
+   contenedores internos opacos que yo no estaba transparentando. NAAT
+   transparenta ~50 elementos; yo solo ~20. Y la v6.2/v6.3 quitó el
+   !important (para copiar a NAAT), pero sin !important el CSS de
+   Discord gana y las capas vuelven a ser opacas — el diagnóstico de la
+   v6.0 (CON !important) sí las mostraba transparentes. Arreglo: TODA
+   la lista de transparencia de NAAT (clases exactas) + mis selectores
+   de substring como respaldo, TODO con !important. Imagen 04 original
+   (GitHub), overlay 0.35. */
+:root {
+  --theme-background-image: url("https://raw.githubusercontent.com/EpicSpartanRyan/gradients/02ffab32a9f26a9f796b1eb9d2c5225aa408cba1/04.png");
+  --theme-transparency: rgba(0, 0, 0, 0.15);
+}
+.appMount_gEkNtR{background:0 0 !important;background-image:var(--theme-background-image) !important;background-size:cover !important}
+.app_QbT-Jy,.app_YRXZu0{background:0 0 !important}
+.bg_Fd0FEH{background:var(--theme-transparency) !important}
+/* Lista completa de transparencia de NAAT (clases exactas), con !important. */
+.wrapper_5dqHTG,
+.container_H5ozaj,
+.chat_z_gUBg,
+.chatContent_z_gUBg,
+.themed_ybUK7Z,
+.container_86es0b,
+.members_86es0b,
+.themedBackground_2x8-Qn,
+.scroller_Bce46W,
+.children_ybUK7Z:after,
+.wrapper_gFyPwI,
+.tabBody_zrUwGA,
+.container_zrUwGA,
+.member_86es0b,
+.nowPlayingColumn_zrUwGA,
+.container_GNEh_C,
+.wrapper_oITdBA,
+.standardSidebarView_jnk11m,
+.sidebarRegionScroller_jnk11m,
+.layer_Fd0FEH,
+.contentRegion_jnk11m,
+.contentRegionScroller_jnk11m,
+.channelAttachmentArea_iH8bsl,
+.upload_JyxBSo,
+.searchBar_wVFOQW,
+.embedFull_XyW1ZT,
+.footer_BOOBu-,
+.textContainer_BOOBu-,
+.codeView_BOOBu-,
+.container_g7esM5,
+.panel_8eCwJY,
+.root_rTsZa_,
+.wrapper_hbKzX7,
+.callContainer_hbKzX7,
+.resizeHandle_FrbQJp,
+.container_FrbQJp,
+.chatLayerWrapper_FrbQJp,
+.channelChatWrapper_hbKzX7,
+.container_BkGrJJ,
+.mainCard_BkGrJJ,
+.membersWrap_86es0b,
+.privateChannels_u88IQl,
+.chatGradient_8AE1Qq,
+.chatTypingGradientAtBottom_8AE1Qq,
+.chatTypingGradientNotAtBottom_8AE1Qq,
+.sidebar_pog62O:after,
+.titleContainer_7NrAL2,
+.header_tLZg6c,
+.scroller_EDKX0U {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+/* Respaldo con selectores de substring (por si cambian los hashes). */
+div[class*="layers_"],
+div[class*="layer_"],
+div[class*="base_"],
+div[class*="content_"],
+div[class*="chat_"],
+div[class*="chatContent_"],
+div[class*="standardSidebarView_"],
+div[class*="sidebarRegionScroller_"],
+div[class*="contentRegion_"],
+div[class*="contentRegionScroller_"],
+div[class*="tabBody_"],
+div[class*="container_"],
+div[class*="nowPlayingColumn_"],
+div[class*="members_"],
+div[class*="membersWrap_"],
+div[class*="privateChannels_"],
+div[class*="sidebar_"],
+div[class*="themed_"],
+div[class*="scroller_"],
+div[class*="wrapper_"] {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* ============ Glassy: panel inferior izquierdo + barra de texto v6.5 ============ */
+/* v6.5 (2026-11-18): La v6.4 ya muestra el gradiente en todo Discord, pero
+   el panel inferior izquierdo (.panels_pog62O: Spotify/voz/usuario) y la
+   barra para escribir (.form_z_gUBg / .channelTextArea_z_gUBg) quedaron
+   con el fondo oscuro sólido de Discord, no glassy. No los cubría la
+   lista de transparencia (no contienen esos substrings) ni tenían regla
+   glassy propia. Se les pone el glassy del tema (blanco 0.08 + blur 10px)
+   al FINAL del archivo para que gane. Además el overlay del fondo bajó
+   de 0.35 a 0.15: Bryan notó que si es demasiado oscuro se ve banding,
+   y tiene razón — al oscurecer en el navegador el dither (±1 nivel) se
+   comprime por debajo de 1 nivel y se pierde, revelando el banding. Con
+   0.15 el dither sobrevive (x0.85) y el banding se reduce. */
+.panels_pog62O,
+.form_z_gUBg,
+.channelTextArea_z_gUBg,
+.scrollableContainer_2x8-Qn {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* ============ Arreglo doble glassy en la barra de texto v6.6 ============ */
+/* v6.6 (2026-11-18): La v6.5 puso glassy en .form_z_gUBg,
+   .channelTextArea_z_gUBg Y .scrollableContainer_2x8-Qn a la vez, y
+   esos tres están ANIDADOS (form > textArea > scrollable). Tres capas
+   de blanco 0.08 + blur se apilan y se ve el "doble glassy" raro.
+   Arreglo: glassy SOLO en .channelTextArea_z_gUBg (la barra redondeada
+   visible); .form_z_gUBg y .scrollableContainer_2x8-Qn transparentes.
+   .panels_pog62O (abajo a la izquierda) sigue glassy, no está anidado
+   con la barra. */
+.form_z_gUBg,
+.scrollableContainer_2x8-Qn {
+  background: transparent !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+}
+
+/* ============ Texto e iconos en blanco puro v6.7 + v6.8 ============ */
+/* v6.7 (2026-11-18): Bryan notó que muchos iconos y texto se ven grises
+   y le gustaban más blancos. Sobre el gradiente brillante, los colores
+   por defecto de Discord (--channels-default, --interactive-normal, etc.,
+   que son grises) se notan más apagados que sobre el negro de antes.
+   Se fuerzan a blanco puro en la barra lateral (DMs), el panel inferior
+   izquierdo y la barra superior: variables de texto/interacción + color
+   forzado en los descendientes, para que iconos (SVG usan currentColor)
+   y texto queden blancos.
+   v6.8 (2026-11-18): Faltaban los de arriba a la derecha (toolbar del
+   header: buscar, llamada, video, pin, miembros) y los de abajo a la
+   derecha (botones de la barra de texto: emoji, stickers, regalo). Se
+   agregan .form_z_gUBg / .channelTextArea_z_gUBg y la toolbar/header. */
+.sidebar_pog62O,
+.panels_pog62O,
+div[class*="privateChannels_"],
+div[class*="themed_"],
+div[class*="toolbar_"],
+div[class*="header_"],
+div[class*="title_"],
+.form_z_gUBg,
+.channelTextArea_z_gUBg {
+  --text-normal: #fff;
+  --text-muted: #fff;
+  --channels-default: #fff;
+  --interactive-normal: #fff;
+  --interactive-hover: #fff;
+  --interactive-active: #fff;
+  --header-primary: #fff;
+  --header-secondary: #fff;
+}
+.sidebar_pog62O *,
+.panels_pog62O *,
+div[class*="privateChannels_"] *,
+div[class*="themed_"] *,
+div[class*="toolbar_"] *,
+div[class*="header_"] *,
+div[class*="title_"] *,
+.form_z_gUBg *,
+.channelTextArea_z_gUBg * {
+  color: #fff !important;
+}
+.sidebar_pog62O svg,
+.panels_pog62O svg,
+div[class*="privateChannels_"] svg,
+div[class*="themed_"] svg,
+div[class*="toolbar_"] svg,
+div[class*="header_"] svg,
+div[class*="title_"] svg,
+.form_z_gUBg svg,
+.channelTextArea_z_gUBg svg {
+  fill: #fff !important;
+}
+
+/* ============ Iconos blancos en la barra de hover de mensajes v6.9 ============ */
+/* v6.9 (2026-11-18): Faltaban los iconos de la barrita que sale al hacer
+   hover sobre un mensaje (traducir, reaccionar, editar, responder, más).
+   Esa barra no está en los contenedores de la v6.7/v6.8 (toolbar del
+   header / form), así que se agregan sus contenedores: la barra de hover
+   y las acciones del mensaje. Además el fill se vuelve más agresivo
+   (svg, svg * y path) porque algunos iconos llevan el fill en el path
+   y no heredan el del svg. Los emojis de reacción (corazones, 😂) son
+   imágenes y no se ven afectados. */
+div[class*="hoverToolbar_"],
+div[class*="buttons_"],
+div[class*="buttonContainer_"],
+div[class*="message_"],
+div[class*="toolbar_"] {
+  --interactive-normal: #fff;
+  --interactive-hover: #fff;
+  --interactive-active: #fff;
+}
+div[class*="hoverToolbar_"] *,
+div[class*="buttons_"] *,
+div[class*="buttonContainer_"] *,
+div[class*="message_"] *,
+div[class*="toolbar_"] * {
+  color: #fff !important;
+}
+div[class*="hoverToolbar_"] svg,
+div[class*="hoverToolbar_"] svg *,
+div[class*="hoverToolbar_"] path,
+div[class*="buttons_"] svg,
+div[class*="buttons_"] svg *,
+div[class*="buttons_"] path,
+div[class*="buttonContainer_"] svg,
+div[class*="buttonContainer_"] svg *,
+div[class*="buttonContainer_"] path,
+div[class*="message_"] svg,
+div[class*="message_"] svg *,
+div[class*="message_"] path,
+div[class*="toolbar_"] svg,
+div[class*="toolbar_"] svg *,
+div[class*="toolbar_"] path {
+  fill: #fff !important;
+}
+
+/* ============ Iconos blancos en el menú contextual (3 puntos) v7.0 ============ */
+/* v7.0 (2026-11-18): Faltaban los iconos del menú contextual que sale al
+   presionar los 3 puntos (Add Reaction, Edit, Reply, Forward, Copy,
+   Pin, Bookmark, etc.). Ese menú es un popout aparte (.menu_), no está
+   en los contenedores de la v6.7-v6.9. Se le pone el blanco puro igual.
+   Se deja el rojo de peligro en "Delete Message" (colorDanger) para no
+   perder la señal de peligro. */
+div[class*="menu_"] {
+  --interactive-normal: #fff;
+  --interactive-hover: #fff;
+  --interactive-active: #fff;
+  --text-normal: #fff;
+}
+div[class*="menu_"] * {
+  color: #fff !important;
+}
+div[class*="menu_"] svg,
+div[class*="menu_"] svg *,
+div[class*="menu_"] path {
+  fill: #fff !important;
+}
+/* Delete Message sigue en rojo de peligro. */
+div[class*="menu_"] [class*="colorDanger_"],
+div[class*="menu_"] [class*="colorDanger_"] *,
+div[class*="menu_"] [class*="colorDanger_"] svg,
+div[class*="menu_"] [class*="colorDanger_"] path {
+  color: #f04747 !important;
+  fill: #f04747 !important;
+}
+
+/* ============ Iconos blancos en la barra superior de la ventana v7.1 ============ */
+/* v7.1 (2026-11-18): Faltaban los 5 de arriba (barra de título de la
+   ventana: bandeja/notificaciones y los botones de ventana). Esos no
+   están en los contenedores de la v6.7-v7.0. Se agregan la barra de
+   título y los botones de ventana (minimizar, maximizar, cerrar) al
+   blanco puro. */
+div[class*="titleBar_"],
+div[class*="titlebar_"],
+div[class*="winButton"],
+div[class*="winButtons"] {
+  --interactive-normal: #fff;
+  --interactive-hover: #fff;
+  --interactive-active: #fff;
+}
+div[class*="titleBar_"] *,
+div[class*="titlebar_"] *,
+div[class*="winButton"] *,
+div[class*="winButtons"] * {
+  color: #fff !important;
+}
+div[class*="titleBar_"] svg,
+div[class*="titleBar_"] svg *,
+div[class*="titleBar_"] path,
+div[class*="titlebar_"] svg,
+div[class*="titlebar_"] svg *,
+div[class*="titlebar_"] path,
+div[class*="winButton"] svg,
+div[class*="winButton"] svg *,
+div[class*="winButton"] path,
+div[class*="winButtons"] svg,
+div[class*="winButtons"] svg *,
+div[class*="winButtons"] path {
+  fill: #fff !important;
+}
+
+/* ============ Los 2 iconos de arriba que faltaban v7.2 ============ */
+/* v7.2 (2026-11-18): Bryan pasó el código de los 2 que no cambiaron.
+   1) Inbox: está en .bar_3zSH5d > .trailing_3zSH5d > .iconWrapper_8_fPij
+   > .clickable_fErCLM, con el path en fill="currentColor". No lo cubría
+   ningún selector anterior (trailing_ no es toolbar_/title_/header_ y
+   titleBar_/winButton no existen; la clase real es bar_3zSH5d).
+   2) El otro icono usa fill="var(--interactive-icon-default)" en el
+   path, variable que yo NO había puesto en blanco (solo puse
+   --interactive-normal/hover/active). Se agrega esa variable en blanco
+   y los contenedores bar_/trailing_/iconWrapper_/clickable_. */
+div[class*="bar_"],
+div[class*="trailing_"],
+div[class*="leading_"],
+div[class*="iconWrapper_"],
+div[class*="clickable_"] {
+  --text-normal: #fff;
+  --interactive-normal: #fff;
+  --interactive-hover: #fff;
+  --interactive-active: #fff;
+  --interactive-icon-default: #fff;
+  --header-primary: #fff;
+  --header-secondary: #fff;
+}
+div[class*="bar_"] *,
+div[class*="trailing_"] *,
+div[class*="leading_"] *,
+div[class*="iconWrapper_"] *,
+div[class*="clickable_"] * {
+  color: #fff !important;
+}
+div[class*="bar_"] svg,
+div[class*="bar_"] svg *,
+div[class*="bar_"] path,
+div[class*="trailing_"] svg,
+div[class*="trailing_"] svg *,
+div[class*="trailing_"] path,
+div[class*="leading_"] svg,
+div[class*="leading_"] svg *,
+div[class*="leading_"] path,
+div[class*="iconWrapper_"] svg,
+div[class*="iconWrapper_"] svg *,
+div[class*="iconWrapper_"] path,
+div[class*="clickable_"] svg,
+div[class*="clickable_"] svg *,
+div[class*="clickable_"] path {
+  fill: #fff !important;
+}
+/* La variable --interactive-icon-default también en blanco en la
+   toolbar del header, por si el segundo icono está ahí. */
+div[class*="toolbar_"],
+div[class*="header_"],
+div[class*="title_"] {
+  --interactive-icon-default: #fff;
+}
+
+/* ============ "In a Voice Channel" en blanco v7.3 ============ */
+/* v7.3 (2026-11-18): El "In a Voice Channel" de la columna Active Now
+   no se puso blanco porque lleva un estilo en línea
+   style="color: var(--text-muted);" y está en la columna
+   .nowPlayingColumn_ / las tarjetas .itemCard_, que no estaban en los
+   contenedores del blanco de la v6.7-v7.2. Se pone --text-muted: #fff
+   en esa columna y tarjetas (así el var() ya resuelve a blanco) y
+   además color: #fff !important en sus descendientes, que gana al
+   estilo en línea. */
+div[class*="nowPlayingColumn_"],
+div[class*="itemCard_"],
+div[class*="peopleColumn_"] {
+  --text-normal: #fff;
+  --text-muted: #fff;
+  --header-secondary: #fff;
+}
+div[class*="nowPlayingColumn_"] *,
+div[class*="itemCard_"] *,
+div[class*="peopleColumn_"] * {
+  color: #fff !important;
+}
+
+/* v7.4 Help (?) junto a Inbox: ELIMINADO en v7.5 (2026-11-18). No funcionó
+   y Bryan dijo que lo olvidara. Se quitó la regla. */
+
+/* ============ Barra de búsqueda glassy (Amigos) v7.6 ============ */
+/* v7.6 (2026-11-18): Bryan quiere la barra de búsqueda de Amigos con
+   efecto glassy sutil y su sombra, como las tarjetas de Active Now de
+   la derecha. El bar es .container_VhFsFg > .control_VhFsFg >
+   .container_UcGqzv > .wrapper_UcGqzv.container_0PLWhS (icono +
+   input). Glassy 0.08 + blur 10px y sombra sutil solo en el campo
+   visible (los contenedores externos quedan transparentes para no
+   apilar glassy). El icono usa var(--input-icon-default), se pone en
+   blanco, y el texto/placeholder también. */
+div[class*="container_VhFsFg"],
+div[class*="control_VhFsFg"],
+div[class*="container_UcGqzv"] {
+  background: transparent !important;
+}
+div[class*="wrapper_UcGqzv"],
+div[class*="container_0PLWhS"] {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  border: none !important;
+  --input-icon-default: #fff;
+  --text-normal: #fff;
+}
+div[class*="wrapper_UcGqzv"] svg,
+div[class*="wrapper_UcGqzv"] svg *,
+div[class*="wrapper_UcGqzv"] path,
+div[class*="container_0PLWhS"] svg,
+div[class*="container_0PLWhS"] svg *,
+div[class*="container_0PLWhS"] path {
+  fill: #fff !important;
+}
+div[class*="input_0PLWhS"],
+div[class*="wrapper_UcGqzv"] input,
+div[class*="container_0PLWhS"] input {
+  color: #fff !important;
+}
+div[class*="input_0PLWhS"]::placeholder,
+div[class*="wrapper_UcGqzv"] input::placeholder,
+div[class*="container_0PLWhS"] input::placeholder {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* ============ Lista de miembros expandida: textos blancos v7.8 ============ */
+/* v7.8 (2026-11-18): Bryan quiere que, cuando la lista de miembros está
+   expandida, los textos sean blancos en lugar de grises: los encabezados
+   de grupo (STAFF, VIP, BOT MUSICA, Online, Offline) y los subtítulos
+   de actividad (/help, ARC Raiders, etc.). Se pone --text-muted: #fff
+   y color: #fff en la lista expandida (hover). Cuando está contraída
+   solo se ven los avatares, así que el blanco solo se nota expandida. */
+.members_86es0b:hover,
+.membersWrap_86es0b:hover {
+  --text-normal: #fff;
+  --text-muted: #fff;
+  --header-secondary: #fff;
+  --channels-default: #fff;
+}
+.members_86es0b:hover *,
+.membersWrap_86es0b:hover * {
+  color: #fff !important;
+}
+
+/* ============ Barra de texto se contrae al expandir miembros v7.9 ============ */
+/* v7.9 (2026-11-18): Bryan reporta un problema de hace tiempo: cuando la
+   lista de miembros se expande (hover, 60px → 240px), la barra para
+   escribir no se contrae a la izquierda. Causa: la lista es
+   position: absolute y flota sobre el chat, y .chatContent_z_gUBg
+   tenía max-width fijo en calc(100% - 60px). Con :has() se reduce el
+   max-width a calc(100% - 240px) mientras la lista está en hover, así
+   el chat y el input se contraen a la izquierda con la misma
+   transición de 500ms. */
+.chatContent_z_gUBg {
+  transition: max-width 200ms ease-out;
+}
+div:has(.membersWrap_86es0b:hover) .chatContent_z_gUBg,
+div:has(.members_86es0b:hover) .chatContent_z_gUBg {
+  max-width: calc(100% - 240px) !important;
+}
+
+/* ============ Emoji picker (Agregar reacción) glassy v8.0 ============ */
+/* v8.0 (2026-11-18): Bryan: al dar click derecho > Agregar reacción, el
+   selector de emojis no estaba glassy (fondo azul sólido). Se pone
+   glassy (0.08 + blur 10px + sombra) en el wrapper del picker
+   (.wrapper_-sZhZn) y transparentes las secciones internas (header,
+   cuerpo, lista de categorías, inspector) para no apilar glassy. El
+   buscador ya es glassy por la v7.6. Textos en blanco. */
+div[class*="wrapper_-sZhZn"] {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+  --text-normal: #fff;
+  --text-muted: #fff;
+  --header-secondary: #fff;
+}
+div[class*="header_-sZhZn"],
+div[class*="emojiPicker_-sZhZn"],
+div[class*="bodyWrapper_-sZhZn"],
+div[class*="categoryList_-sZhZn"],
+div[class*="inspector_1bDrGE"] {
+  background: transparent !important;
+}
+
+/* ============ Píldoras de roles glassy v8.2 ============ */
+/* v8.2 (2026-11-18): La v8.1 dejó las píldoras cuadradas y con doble
+   glassy: el glassy quedó en el contenedor exterior (rectangular, sin
+   border-radius) y el interior seguía aportando su propio fondo. Se
+   deja el glassy SOLO en la píldora exterior, con border-radius para
+   que vuelva a ser redondeada, y el interior totalmente transparente
+   (sin fondo, sin blur, sin sombra).
+   v8.3: Bryan pidió el borde más grande — border-radius 4px → 999px,
+   píldoras totalmente redondeadas (forma de pastilla).
+   v8.4: Bryan dijo "quizá no tanto" — 999px era demasiado redondo.
+   Punto medio: border-radius 8px (más redondo que los 4px originales,
+   pero sin llegar a pastilla completa). */
+div[class*="role_88IrSD"],
+div[class*="button_ZsHRs7"] {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 8px !important;
+}
+div[class*="role_ZsHRs7"],
+div[class*="role_p3g15p"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+/* ============ Animación rápida estilo Zen v8.5 ============ */
+/* v8.5 (2026-11-18): Bryan: las píldoras quedaron pixel perfect. Ahora
+   quiere que el panel de servidores (izquierda) y el de miembros
+   (derecha) se expandan tan rápido como el panel del navegador Zen.
+   Se bajó la duración a 200ms con ease-out en los tres sitios que se
+   mueven juntos: lista de miembros (500ms → 200ms, incluye la altura
+   de los encabezados de grupo), barra de servidores (250ms → 200ms) y
+   el max-width del chat (500ms → 200ms, para que el input se contraiga
+   en sync con la lista de miembros). */
+
+/* ============ Tarjeta hover de servidores: texto blanco v8.6 ============ */
+/* v8.6 (2026-11-18): Bryan: el texto de abajo de la tarjeta que sale al
+   hacer hover sobre un servidor (nombre + actividad/miembros) se veía
+   gris. Se pone --text-muted: #fff y color: #fff en el tooltip, para
+   que el nombre y el subtítulo de actividad queden blancos. */
+[class*="tooltip_"] {
+  --text-normal: #fff;
+  --text-muted: #fff;
+  --header-secondary: #fff;
+}
+[class*="tooltip_"] * {
+  color: #fff !important;
+}
