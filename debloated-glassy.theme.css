@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 9.4
+  * @version 9.5
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -662,6 +662,23 @@ aside:has([class*="user-profile-sidebar"]) {
   display: inline-block !important;
 }
 [class*="user-profile-sidebar"] [class*="descriptionClamp_"] a:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+}
+
+/* v9.5 (2026-11-19): Bryan: el botón "View Full Profile" de abajo del
+   perfil no le convencía (era el gris plano de Discord). Se le da el
+   mismo estilo que a la píldora del link de la bio: glassy blanco
+   (fondo translúcido + blur + borde suave + radio 8px como las píldoras
+   de rol), texto blanco; al pasar el mouse se aclara un poco. */
+[class*="user-profile-sidebar"] [class*="redesignFooter_"] button {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+[class*="user-profile-sidebar"] [class*="redesignFooter_"] button:hover {
   background: rgba(255, 255, 255, 0.16) !important;
 }
 
