@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 9.7
+  * @version 9.8
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -723,6 +723,19 @@ aside:has([class*="user-profile-sidebar"]) {
    devuelve el círculo a transparente. */
 [class*="circleIconButton_"] svg circle[fill="transparent"] {
   fill: transparent !important;
+}
+
+/* v9.8 (2026-11-19): Bryan: quitar el botón Discover (la brújula) al
+   final de la lista de servidores — no lo usa. Primero se intentó
+   ocultar solo su tooltip "Discover" con :has() + :hover, pero no
+   funcionó: el :hover del botón dentro del foreignObject no llega al
+   :has() (el diagnóstico en consola mostró el tooltip con clase
+   tooltip_ZDdyhE y display: flex, pero el botón reporta :hover false
+   aunque el tooltip esté visible). Así que se oculta el listItem
+   completo que contiene el botón, y con eso desaparece también el
+   tooltip (ya no hay nada que hoverear). */
+[class*="listItem_"]:has([data-list-item-id="guildsnav___guild-discover-button"]) {
+  display: none !important;
 }
 
 /* Las insignias (badges) del perfil no se muestran. */
