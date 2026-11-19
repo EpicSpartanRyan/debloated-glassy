@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 9.3
+  * @version 9.4
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -644,6 +644,25 @@ aside:has([class*="user-profile-sidebar"]) {
    con !important para sobrescribirlo. */
 [class*="mutuals_"] [class*="text_"] {
   color: #fff !important;
+}
+
+/* v9.4 (2026-11-19): Bryan: el link de la bio del perfil se veía azul
+   (el azul de Discord) y no le gustaba; me dejó elegir el estilo.
+   Sorpresa: el link pasa a ser una píldora glassy blanca (fondo
+   translúcido + blur + borde suave + radio 8px como las píldoras de
+   rol), sin subrayado; al pasar el mouse se aclara un poco. */
+[class*="user-profile-sidebar"] [class*="descriptionClamp_"] a {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 2px 8px !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+}
+[class*="user-profile-sidebar"] [class*="descriptionClamp_"] a:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
 }
 
 /* Las insignias (badges) del perfil no se muestran. */
