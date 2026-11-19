@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 9.1
+  * @version 9.2
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -1563,6 +1563,34 @@ div[class*="wrapper_"] {
   border: none !important;
   box-shadow: none !important;
   border-radius: 16px !important;
+}
+
+/* ============ Glassy en el popup de autocompletado (@-mention) v9.2 ============ */
+/* v9.2 (2026-11-19): el popup que sale al escribir @ era un panel sólido
+   azul-gris, no glassy. Glassy denso (blanco 0.25 + blur 16px, como la
+   barra de reply) en el contenedor exterior; las capas internas
+   transparentes para que el efecto no se duplique.
+   Fix (2026-11-19, sin subir versión): el blur no llegaba a los mensajes
+   porque el popup vive DENTRO de la barra de texto y el blur de la barra
+   crea un contexto que el blur del popup no puede atravesar — por eso se
+   veía el fondo nítido y la opacidad 0.9 lo dejaba demasiado blanco.
+   Cuando el popup está abierto, se quita el blur de la barra (con :has())
+   para que el blur del popup sí llegue a los mensajes, como el del panel
+   de stickers. La barra apenas cambia (su fondo es un degradado suave). */
+[class*="autocompleteAttached_"] {
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(16px) !important;
+  border: none !important;
+  border-radius: 16px !important;
+}
+.channelTextArea_z_gUBg:has([class*="autocompleteAttached_"]) {
+  backdrop-filter: none !important;
+}
+[class*="autocompleteAttached_"] [class*="autocompleteInner_"],
+[class*="autocompleteAttached_"] [class*="scroller_"] {
+  background: transparent !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
 }
 
 /* ============ Texto e iconos en blanco puro v6.7 + v6.8 ============ */
