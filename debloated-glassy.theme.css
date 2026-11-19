@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 9.2
+  * @version 9.3
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -636,6 +636,14 @@ aside:has([class*="user-profile-sidebar"]) {
 [class*="user-profile-sidebar"] [class*="overlay"] {
   background: rgba(255, 255, 255, 0.08) !important;
   backdrop-filter: blur(10px) !important;
+}
+
+/* v9.3 (2026-11-19): Bryan: los textos "18 Mutual Friends" y "3 Mutual
+   Servers" del perfil (barra lateral) se veían grises. El gris viene del
+   estilo en línea color: var(--interactive-text-default); se pone blanco
+   con !important para sobrescribirlo. */
+[class*="mutuals_"] [class*="text_"] {
+  color: #fff !important;
 }
 
 /* Las insignias (badges) del perfil no se muestran. */
