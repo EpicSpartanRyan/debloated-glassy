@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 10.0
+  * @version 10.1
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -749,6 +749,42 @@ aside:has([class*="user-profile-sidebar"]) {
    ("Start Video Call", la cámara) de la barra superior del canal. */
 [aria-label="Start Video Call"] {
   display: none !important;
+}
+
+/* v10.1 (2026-11-19): Bryan: los textos e iconos del popout de cuenta
+   (el perfil propio al hacer clic en el avatar) no se veían blancos.
+   Se ponen blancos con variables + color (los iconos usan
+   currentColor, así que heredan el blanco; el + de estado usa
+   --interactive-icon-default). Sin regla de fill: el punto verde de
+   estado es un rect con fill #45a366 y debe seguir verde. Y los links
+   azules de la bio llevan la misma píldora glassy del link de la bio
+   en la sidebar (v9.4). */
+[class*="accountPopout_"] {
+  --text-normal: #fff;
+  --text-muted: #fff;
+  --header-secondary: #fff;
+  --channels-default: #fff;
+  --interactive-normal: #fff;
+  --interactive-hover: #fff;
+  --interactive-active: #fff;
+  --interactive-icon-default: #fff;
+}
+[class*="accountPopout_"] * {
+  color: #fff !important;
+}
+[class*="accountPopout_"] [class*="descriptionClamp_"] a {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 2px 8px !important;
+  margin: 4px 0 !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+}
+[class*="accountPopout_"] [class*="descriptionClamp_"] a:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
 }
 
 /* Las insignias (badges) del perfil no se muestran. */
