@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 9.0
+  * @version 9.1
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -1483,6 +1483,86 @@ div[class*="wrapper_"] {
   background: transparent !important;
   background-image: none !important;
   backdrop-filter: none !important;
+}
+
+/* ============ Glassy agresivo en la barra de "Replying to..." v9.1 ============ */
+/* v9.1 (2026-11-19): la barra de "Replying to ..." era un rectángulo
+   azul-gris sólido de Discord. Glassy más agresivo que el estándar del
+   tema (0.08): fondo blanco 0.25 como los tooltips, blur 16px y sombra
+   0 8px 24px, solo en la barra visible (replyBar_); todas las capas que
+   la envuelven (stackedBars_, clipContainer_, container_) transparentes,
+   sin fondo ni blur ni sombra, para que el efecto no se duplique. El
+   texto y la X ya son blancos por la regla v6.8 de channelTextArea.
+   Fix (2026-11-19, sin subir versión): se veía doble línea arriba — la
+   barra tenía borde propio y no quedaba a ras del contenedor, así que se
+   veían el borde del textArea y el borde de la barra. Se quita el borde
+   de la barra, se pone a ras (margen 0, sin radio) y sin padding en el
+   contenedor. Fix 2 (2026-11-19, sin subir versión): el radio 0 dejó la
+   barra con bordes cuadrados; se devuelve el radio arriba (16px, como
+   el contenedor) y recto abajo, donde se junta con la barra de texto.
+   Fix 3 (2026-11-19, sin subir versión): se veía una esquina cuadrada
+   (la inferior de la barra) y dos bordes redondeados; se redondea
+   también abajo, más suave (8px) para que no se note en la junta.
+   Fix 4 (2026-11-19, sin subir versión): el radio de abajo empeoró la
+   junta con la barra de texto (la barra va a ras, la junta tiene que
+   ser recta) — se vuelve a 0 abajo. Y arriba se sube a 24px, el radio
+   del contenedor: con 16px la esquina se veía cuadrada al lado de la
+   curva del contenedor.
+   Fix 5 (2026-11-19, sin subir versión): menos radio arriba (24px →
+   16px) y se redondean las esquinas superiores del textArea para que
+   coincidan con la barra: se seguía viendo un borde cuadrado extra,
+   la esquina cuadrada del contenedor detrás de la esquina redonda de
+   la barra. Se quita también el borde del textArea. */
+[class*="stackedBars_"],
+[class*="stackedBars_"] [class*="clipContainer_"],
+[class*="stackedBars_"] [class*="container_"] {
+  background: transparent !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+[class*="stackedBars_"] [class*="replyBar_"] {
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(16px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+  border: none !important;
+  border-radius: 16px 16px 0 0 !important;
+  margin: 0 !important;
+}
+.channelTextArea_z_gUBg {
+  border: none !important;
+  border-top-left-radius: 16px !important;
+  border-top-right-radius: 16px !important;
+}
+
+/* Fix 7 (2026-11-19, sin subir versión): el borde cuadrado era la sombra
+   de la barra asomando por las esquinas cuadradas del clipContainer y el
+   container (radio 0, según el diagnóstico) — la barra tiene 16px arriba
+   y dejaba un hueco cuadrado oscuro en las esquinas. Se les da a todas
+   las capas el mismo radio 16px arriba para que coincidan con la barra. */
+[class*="stackedBars_"],
+[class*="stackedBars_"] > div,
+[class*="stackedBars_"] [class*="clipContainer_"],
+[class*="stackedBars_"] [class*="container_"] {
+  border-top-left-radius: 16px !important;
+  border-top-right-radius: 16px !important;
+}
+
+/* Fix 6 (2026-11-19, sin subir versión): quedaba una esquina cuadrada
+   que venía del form (el contenedor exterior): se le quitan fondo,
+   borde y sombra, y se le da el mismo radio que al textArea para que
+   nada cuadrado asome detrás de las esquinas redondas. Lo mismo para
+   channelBottomBarArea, el otro envoltorio exterior. */
+.form_z_gUBg,
+[class*="channelBottomBarArea_"] {
+  background: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 16px !important;
 }
 
 /* ============ Texto e iconos en blanco puro v6.7 + v6.8 ============ */
