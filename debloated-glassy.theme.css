@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 9.9
+  * @version 10.0
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -742,6 +742,12 @@ aside:has([class*="user-profile-sidebar"]) {
    (Go back / Go forward) de arriba a la izquierda, en la barra
    superior. No las usa. */
 [class*="backForwardButtons_"] {
+  display: none !important;
+}
+
+/* v10.0 (2026-11-19): Bryan: eliminar el botón de videollamada
+   ("Start Video Call", la cámara) de la barra superior del canal. */
+[aria-label="Start Video Call"] {
   display: none !important;
 }
 
