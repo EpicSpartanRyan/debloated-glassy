@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 8.6
+  * @version 8.8
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -387,6 +387,33 @@ svg circle[mask^="url(#svg-mask-status-"] {
   display: none !important;
 }
 mask[id^="svg-mask-avatar-status"] > :not([fill="white"]) {
+  display: none !important;
+}
+
+/* v8.7 (2026-11-18): variante nueva del punto de estado que se escapaba
+   de la regla de arriba: Discord ahora dibuja el punto (el anillo gris
+   de "sin conexión") como un svg aparte con clase cursorDefault_* y una
+   máscara con id aleatorio (_r_2ht_), no svg-mask-status-*. Y la regla
+   blanca de la v6.8 (privateChannels_ svg { fill: #fff }) pintaba ese
+   rect gris de blanco, por eso se veía como un punto blanco en la lista
+   de DMs. Se esconde el svg entero. */
+[class*="avatar"] svg[class*="cursorDefault_"] {
+  display: none !important;
+}
+
+/* v8.8 (2026-11-18): en los avatares, solo la imagen principal: se esconde
+   TODO lo demás. El grupo <g> del punto de estado (incluido el icono de
+   teléfono verde de "Online via mobile", que es el mismo svg
+   cursorDefault_* pero con forma de teléfono #45a366), la decoración de
+   avatar de la tienda (avatarDecorationContainer_*), y el hueco que la
+   máscara del avatar recorta para el punto: las máscaras nuevas llevan
+   id aleatorio (_r_12r_), no svg-mask-avatar-status-*, así que la regla
+   de la v13 no lo tapaba. */
+[class*="avatar"] svg[class*="mask_"] > g,
+[class*="avatar"] svg[class*="avatarDecorationContainer_"] {
+  display: none !important;
+}
+[class*="avatar"] svg[class*="mask_"] mask > :not([fill="white"]) {
   display: none !important;
 }
 
