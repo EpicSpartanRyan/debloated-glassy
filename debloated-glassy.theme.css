@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 8.8
+  * @version 8.9
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -415,6 +415,22 @@ mask[id^="svg-mask-avatar-status"] > :not([fill="white"]) {
 }
 [class*="avatar"] svg[class*="mask_"] mask > :not([fill="white"]) {
   display: none !important;
+}
+
+/* v8.9 (2026-11-19): el icono de teléfono seguía viéndose con la v8.8,
+   así que van selectores redundantes sobre el mismo elemento: las clases
+   exactas del HTML (avatar_TBNqol / wrapper_XpIUHy), el atributo
+   transform del <g>, y el svg cursorDefault_* sin scope, con visibility
+   y opacity de respaldo. Si con esto sigue viéndose, el archivo cargado
+   no es la v8.9: revisa el @version en Vesktop y que solo haya un
+   debloated-glassy en la carpeta de temas. */
+.avatar_TBNqol .wrapper_XpIUHy > svg > g,
+[class*="avatar"] svg[class*="mask_"] > g,
+[class*="avatar"] g[transform*="translate(14.5, 17)"],
+svg[class*="cursorDefault_"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 
 /* Nombres de usuario siempre en blanco (sin colores de rol).
