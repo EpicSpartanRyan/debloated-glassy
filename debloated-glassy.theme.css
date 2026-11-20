@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 11.0.4
+  * @version 11.0.5
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -588,7 +588,7 @@ header[class*="headerFull"] ~ section[class*="section_"] {
    como último hijo, que medía 85x85 y se solapaba 10.6px con el
    nombre. Ese img suelto es el tile en sí: mide 64x64 con
    box-sizing border-box (el padding queda dentro, la imagen 32x32).
-   Transición rápida (0.2s). La tarjeta de Quest (chara) es una
+   Transición rápida (0.1s). La tarjeta de Quest (chara) es una
    itemCard pelada (sin outer_/interactive_) y no le entraba esta
    regla, así que le quedaba el fondo glassy 0.08 de la regla vieja
    (línea ~526) ENCIMA de los tiles 0.15: doble fondo (Bryan 19:42).
@@ -609,10 +609,10 @@ header[class*="headerFull"] ~ section[class*="section_"] {
   display: flex !important;
   align-items: center !important;
   gap: 0 !important;
-  transition: gap 0.2s ease !important;
+  transition: gap 0.1s ease !important;
 }
 [class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerFull"] {
-  gap: 12px !important;
+  gap: 8px !important;
 }
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :first-child,
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :nth-child(2),
@@ -621,7 +621,7 @@ header[class*="headerFull"] ~ section[class*="section_"] {
   backdrop-filter: none !important;
   border: none !important;
   box-shadow: none !important;
-  transition: background 0.2s ease, border-radius 0.2s ease, padding 0.2s ease, margin 0.2s ease !important;
+  transition: background 0.1s ease, border-radius 0.1s ease, padding 0.1s ease, margin 0.1s ease !important;
 }
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :nth-child(3):not(:last-child) {
   display: none !important;
@@ -665,7 +665,7 @@ header[class*="headerFull"] ~ section[class*="section_"] {
    hover y en hover vuelve a 8px. El tile se mueve y el texto se
    desplaza lo mismo dentro de él en sentido contrario, así que el
    texto queda fijo en su posición final desde el inicio. El padding
-   anima con la misma transición de 0.2s que el gap, así que no hay
+   anima con la misma transición de 0.1s que el gap, así que no hay
    salto. Bryan 21:34: el centro se contraía 24px al hacer hover (dos
    gaps de 12px); ahora solo se contrae la mitad (12px). Los laterales
    son 6px más anchos hacia el centro en reposo (padding interior
@@ -678,7 +678,7 @@ header[class*="headerFull"] ~ section[class*="section_"] {
    hacia el centro, su caja de contenido queda en el mismo sitio. */
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :nth-child(2) {
   margin: -20px 0 !important;
-  padding: 20px 8px 20px 14px !important;
+  padding: 20px 8px 20px 10px !important;
   border-radius: 0 !important;
   flex-grow: 1 !important;
   min-width: 0 !important;
@@ -711,6 +711,99 @@ header[class*="headerFull"] ~ section[class*="section_"] {
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :last-child * {
   max-width: 32px !important;
   max-height: 32px !important;
+}
+/* Bryan 22:09: cuando la tarjeta ya está dividida (hover), los tiles
+   son un 10% más grandes (scale 1.1) y llevan sombra de fondo
+   (box-shadow suave, como los tiles de la imagen de referencia).
+   Bryan 22:14: mejor solo 7%, y la sombra por tile no se ve bien
+   (cada sombra cae encima de los tiles vecinos). Además la tarjeta
+   no dejaba que los tiles se vieran más grandes. En su lugar, es
+   TODA la tarjeta la que crece un 7% (scale 1.07) y la sombra es
+   para toda la tarjeta, visible en sus bordes. Los tiles ya no
+   escalan ni llevan sombra individual.
+   Bryan 22:17: mejor un 5% (el 7% colisionaba con el scrollbar de la
+   derecha) y la sombra no se veía: la regla que hace transparentes
+   las tarjetas (outer_/interactive_ y Quest) pone box-shadow: none
+   con mayor especificidad, así que la sombra del hover nunca se
+   aplicaba. La regla del hover ahora usa esos mismos selectores
+   (outer_/interactive_ y :has(questCardContextMenuTrigger_)) para
+   ganarle en especificidad y que la sombra sí se vea.
+   Bryan 22:19: mejor un 3% (scale 1.03), y la sombra de toda la
+   tarjeta se cortaba a la izquierda y no se veía en los espacios
+   entre los elementos (el box-shadow de la tarjeta solo bordea su
+   caja exterior, nunca cae en los gaps internos). Vuelve la sombra
+   por tile, pero chica (0 3px 10px): el blur de 10px cabe en el gap
+   de 12px, así que la sombra sí se ve entre los elementos y se
+   desvanece antes de llegar al tile vecino (no cae encima de él
+   como el blur de 18px). La tarjeta ya no lleva sombra, solo
+   escala 3%.
+   Bryan 22:22: ahora la sombra solo se ve entre los elementos, no
+   afuera. Hacen falta las dos: vuelve la sombra de toda la tarjeta
+   (0 6px 16px) para los bordes exteriores, y se queda la sombra por
+   tile (0 3px 10px) para los gaps. La de la tarjeta usa un blur
+   menor (16px en vez de 24px) para que se corte menos a la
+   izquierda.
+   Bryan 22:24: la sombra del borde exterior necesita un radio menor
+   para que no se vea como se corta a la izquierda (pasa de 0 6px
+   16px a 0 4px 8px), y la sombra entre los elementos debe ser
+   uniforme: la de los tiles pierde el desplazamiento vertical
+   (de 0 3px 10px a 0 0 10px), así se reparte igual por todos lados
+   en el gap en vez de cargarse hacia abajo.
+   Bryan 22:26: la sombra entre los elementos internos sigue sin
+   verse uniforme. Causa: el blur se desvanece con la distancia,
+   así que en el gap la sombra es más fuerte junto a cada tile y
+   más débil en el centro. La sombra de los tiles gana un spread
+   de 4px (de 0 0 10px a 0 0 6px 4px): el núcleo sólido de 4px
+   llena el gap de forma pareja en vez de desvanecerse, y el blur
+   de 6px mantiene el borde suave.
+   Bryan 22:28: sigue sin verse uniforme. Causa: con spread 4px y
+   blur 6px las sombras de los dos tiles se solapan mucho en el
+   centro del gap y se oscurece ahí (doble alfa). Ahora spread
+   5px y blur solo 2px (0 0 2px 5px): el núcleo sólido llega casi
+   hasta la mitad del gap (5px de 6px) y el desvanecido es corto,
+   así la zona donde se solapan es mínima y el gap queda parejo
+   de lado a lado sin oscurecerse en el centro.
+   Bryan 22:30: "vale, solo incrementa el radio" — acepta la
+   uniformidad actual y pide el radio más grande. El blur de la
+   sombra por tile sube de 2px a 6px (0 0 6px 5px), con el spread
+   de 5px intacto para que el núcleo sólido siga llenando el gap
+   de forma pareja.
+   Bryan 22:31: "que sea mucho mas grande el radio" — el blur de
+   la sombra por tile sube de 6px a 20px (0 0 20px 5px), con el
+   spread de 5px intacto.
+   Bryan 22:32: "okay, un radio aun mas grande, y creo que quieres
+   aumentar el falloff al maximo posible, o no se si reducirlo al
+   maximo posible" — el blur sube de 20px a 40px (0 0 40px 5px).
+   Y sí, aumentar el falloff es lo correcto: con un blur mucho
+   más grande que el gap (40px vs 12px), la intensidad de la
+   sombra cambia muy despacio a lo largo del gap, así que se ve
+   pareja en vez de formar una banda oscura en el centro. Reducir
+   el falloff (blur chico) haría la sombra dura y el borde
+   marcado, que es lo contrario de lo que buscas.
+   Bryan 22:36: "mejor ya no intentemos cosas con sombras, elimina
+   las sombras de las tarjetas por completo, ahora, mas bien me
+   gustaria que el gap entre los elementos internos de las tarjetas
+   en su estado final sea un 33% menor" — se acabaron las sombras:
+   fuera la sombra de toda la tarjeta (0 4px 8px), fuera las
+   sombras por tile (0 0 40px 5px, las 3), y fuera el box-shadow
+   de las transiciones (tarjeta y tiles). El gap en hover pasa de
+   12px a 8px (33% menor: 12 x 0.67 = 8.04). Como el tile del
+   centro ahora solo se mueve 2px a la derecha en hover (gap 8px
+   menos los 6px que ceden los laterales al encogerse), su padding
+   izquierdo en reposo baja de 14px a 10px para que el texto siga
+   sin moverse (10px - 8px de hover = 2px, igual que el
+   desplazamiento del tile). Lo mismo para el texto de voz.
+   Bryan 22:40: "okay, ahora, puedes hacer que la animacion sea
+   un 50% mas rapida" — todas las transiciones de la animación de
+   las tarjetas (gap del header, tiles, y transform de la tarjeta)
+   pasan de 0.2s a 0.1s. Solo las de Active Now; la transición de
+   ancho de la lista de miembros (0.2s ease-out) no se toca. */
+[class*="nowPlayingColumn"] [class*="itemCard"] {
+  transition: transform 0.1s ease !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"][class*="outer_"][class*="interactive_"]:hover,
+[class*="nowPlayingColumn"] [class*="itemCard"]:has([class*="questCardContextMenuTrigger_"]):hover {
+  transform: scale(1.03) !important;
 }
 [class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerFull"] > :first-child,
 [class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerFull"] > :last-child {
@@ -791,10 +884,10 @@ header[class*="headerFull"] ~ section[class*="section_"] {
   background: transparent !important;
   background-color: transparent !important;
   backdrop-filter: none !important;
-  transition: gap 0.2s ease !important;
+  transition: gap 0.1s ease !important;
 }
 [class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerSimple_"] {
-  gap: 12px !important;
+  gap: 8px !important;
 }
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] > :first-child,
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] > :last-child {
@@ -802,7 +895,7 @@ header[class*="headerFull"] ~ section[class*="section_"] {
   backdrop-filter: none !important;
   border: none !important;
   box-shadow: none !important;
-  transition: background 0.2s ease, border-radius 0.2s ease, padding 0.2s ease, margin 0.2s ease !important;
+  transition: background 0.1s ease, border-radius 0.1s ease, padding 0.1s ease, margin 0.1s ease !important;
 }
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] > :first-child {
   margin: -14px 0 -14px -12px !important;
@@ -815,7 +908,7 @@ header[class*="headerFull"] ~ section[class*="section_"] {
 }
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] > :last-child {
   margin: -11px -12px -11px 0 !important;
-  padding: 11px 12px 11px 14px !important;
+  padding: 11px 12px 11px 10px !important;
   border-radius: 0 16px 16px 0 !important;
   flex-grow: 1 !important;
   min-width: 0 !important;
