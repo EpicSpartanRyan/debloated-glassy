@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 11.0.3
+  * @version 11.0.4
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -1382,19 +1382,17 @@ li[class*="dm_"] [class*="subText_"] {
   backdrop-filter: none !important;
 }
 
-/* Las carpetas de servidores: efecto glassy/difuminado,
-   para menor ruido visual.
-   v10.2.7: se restauran los blurs (backdrop-filter en el botón y
-   filter en la preview) que se habían quitado en v10.2.5 — el
-   diagnóstico demostró que la carpeta en blanco era por el
-   focusStroke (ya corregido en v10.2.6), no por los blurs. A Bryan
-   le gustaba el difuminado cuando la carpeta está contraída. */
+/* Las carpetas de servidores: fondo glassy sin blur.
+   Bryan 21:45: se quitó el blur de las carpetas (backdrop-filter del
+   botón y filter de la preview) porque la animación al abrir la
+   carpeta se sentía clogged. El fondo rgba 0.08 y la opacidad 0.85
+   de la preview se mantienen. */
 [class*="folderButtonInner"] {
   background: rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(10px) !important;
+  backdrop-filter: none !important;
 }
 [class*="folderPreview"] {
-  filter: blur(2px) !important;
+  filter: none !important;
   opacity: 0.85 !important;
 }
 /* v10.2.6 (2026-11-19): la carpeta seguía en blanco. El diagnóstico
