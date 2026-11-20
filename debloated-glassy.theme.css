@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 10.3.6
+  * @version 11.0.0
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -513,7 +513,8 @@ li[class*="withGradient"] {
 }
 
 /* ACTIVE NOW: solo la parte de arriba de cada tarjeta.
-   La sección de abajo (detalles del juego/canal) se oculta;
+   La sección de abajo (detalles del juego/canal) se oculta
+   SIEMPRE (Bryan 2026-11-19 18:03: nunca se muestran);
    las tarjetas quedan con fondo glassy (translúcido + blur)
    para que se vea el fondo, y el panel un poco más compacto.
    (El fondo glassy es a pedido de Bryan, como los nombres
@@ -539,6 +540,225 @@ header[class*="headerFull"] ~ section[class*="section_"] {
 }
 [class*="nowPlayingColumn"] [class*="scrollerBase"] {
   padding: 4px 6px 12px !important;
+}
+
+/* v10.3.8 (2026-11-19): efecto de división en 3 de v10.3.7 eliminado
+   a pedido de Bryan (no le gustó ni la transición ni el efecto final).
+   Las tarjetas vuelven a ser compactas, solo el header, como antes. */
+
+/* v10.3.9 (2026-11-19, rediseño 18:33, ajustado 18:36, ajustado 18:39, ajustado 18:43, ajustado 18:49, ajustado 18:51, revertido 18:54, ajustado 18:57, ajustado 19:00, ajustado 19:03): tarjetas de Active Now divididas en 3
+   SIEMPRE (no solo en hover): avatar, nombre e icono son 3 segmentos
+   con hueco entre ellos, que juntos forman la card. (Bryan 18:33:
+   más separados antes del hover, mismo efecto en los 3.)
+   Por defecto los segmentos van JUNTOS (gap 0, como una sola card) y
+   solo al final de la transición (hover) se separan (gap 12px, Bryan
+   18:43). Por defecto el segmento izquierdo tiene redondos solo los
+   bordes de la izquierda, el derecho solo los de la derecha, y el centro
+   sin bordes (como una card partida en 3). En hover, los 3 tienen todos
+   los bordes redondos. La card en sí es transparente siempre; el header
+   queda intacto (los tiles se estiran a los bordes con márgenes
+   negativos + padding, sin mover el contenido). Sin bordes blancos: los
+   3 segmentos se ven como un único elemento (Bryan 18:36). El tile de
+   nombre crece (flex-grow) para empujar el icono siempre hasta la
+   derecha (Bryan 18:36). Los tiles de avatar/icono llevan 8px extra de
+   ancho hacia el centro (Bryan 18:39) y el tile del centro es más alto
+   verticalmente (20px, Bryan 18:39). El icono se toma como :last-child
+   (no :nth-child(3)) y cualquier 3er elemento que no sea el último se
+   oculta: algunas actividades meten un elemento extra entre el nombre
+   y el icono y ese elemento, con estilo de tile, se veía como una
+   franja clara de solapamiento (Bryan 19:03). El icono tiene tamaño
+   fijo 32px (img/svg forzados a 32x32, cualquier descendiente limitado
+   a max 32x32) y el tile derecho recorta lo que se desborde (overflow
+   hidden) para que siempre mida lo mismo y no se solape con el nombre
+   (Bryan 18:43, 18:51, 18:57). El tile de nombre lleva min-width: 0
+   para que pueda encogerse y no se solape con el icono cuando el nombre
+   o la actividad son largos (Bryan 19:00). Los segmentos son blanco
+   transparente (0.15, sin blur) en lugar de glassy: el blur no se veía
+   uniforme y el blanco transparente se ve igual sobre la gradiente de
+   fondo (Bryan 18:49). Sin sombra: la sombra se solapaba en las juntas
+   con gap 0 y dejaba una línea de discontinuidad (Bryan 18:51,
+   confirmado que quitarla arregló la línea). El ancho fijo 52px en los
+   tiles laterales y el overflow hidden en el nombre (18:51) rompieron
+   el layout y se revirtieron 18:54 (Bryan: "todo se ve roto"). Los tiles
+   laterales son cuadrados (64x64): su padding hacia el centro es 20px
+   para igualar su ancho con su altura (Bryan 19:07). El icono es de
+   dos tipos según la actividad (diagnóstico de consola 19:15): en
+   juegos es un div.clickable (64x64) con un img dentro (32x32); en
+   YouTube/Modrinth/GeForce NOW/Premiere es un img.headerIcon suelto
+   como último hijo, que medía 85x85 y se solapaba 10.6px con el
+   nombre. Ese img suelto es el tile en sí: mide 64x64 con
+   box-sizing border-box (el padding queda dentro, la imagen 32x32).
+   Transición rápida (0.2s). La tarjeta de Quest (chara) es una
+   itemCard pelada (sin outer_/interactive_) y no le entraba esta
+   regla, así que le quedaba el fondo glassy 0.08 de la regla vieja
+   (línea ~526) ENCIMA de los tiles 0.15: doble fondo (Bryan 19:42).
+   Por eso se añade el :has(questCardContextMenuTrigger_) para que
+   la Quest también quede transparente y solo se vean los tiles,
+   igual que las demás. */
+[class*="nowPlayingColumn"] [class*="itemCard"][class*="outer_"][class*="interactive_"],
+[class*="nowPlayingColumn"] [class*="itemCard"][class*="outer_"][class*="interactive_"] > div,
+[class*="nowPlayingColumn"] [class*="itemCard"]:has([class*="questCardContextMenuTrigger_"]),
+[class*="nowPlayingColumn"] [class*="itemCard"]:has([class*="questCardContextMenuTrigger_"]) > div {
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  transition: gap 0.2s ease !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerFull"] {
+  gap: 12px !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :first-child,
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :nth-child(2),
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :last-child {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: background 0.2s ease, border-radius 0.2s ease, padding 0.2s ease, margin 0.2s ease !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :nth-child(3):not(:last-child) {
+  display: none !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :first-child {
+  margin: -14px 0 -14px -12px !important;
+  padding: 14px 20px 14px 12px !important;
+  border-radius: 16px 0 0 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+/* v10.3.11 (2026-11-19): el tile del centro (nombre) se probó con
+   el mismo radio (8px) que los exteriores (Bryan 19:52), pero al ir
+   JUNTOS (gap 0) las esquinas redondas del centro recortan las
+   juntas y se ven como cortes/muescas (Bryan 19:54). Por eso el
+   centro vuelve a ser cuadrado (0) en reposo y solo se redondea
+   en hover, cuando los tiles ya están separados y no hay junta. */
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :nth-child(2) {
+  margin: -20px 0 !important;
+  padding: 20px 8px !important;
+  border-radius: 0 !important;
+  flex-grow: 1 !important;
+  min-width: 0 !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :last-child {
+  margin: -14px -12px -14px 0 !important;
+  padding: 14px 12px 14px 20px !important;
+  border-radius: 0 16px 16px 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  overflow: hidden !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :last-child img,
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :last-child svg {
+  width: 32px !important;
+  height: 32px !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > img[class*="headerIcon_"],
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > svg[class*="headerIcon_"] {
+  width: 64px !important;
+  height: 64px !important;
+  box-sizing: border-box !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :last-child * {
+  max-width: 32px !important;
+  max-height: 32px !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerFull"] > :first-child,
+[class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerFull"] > :last-child {
+  border-radius: 16px !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerFull"] > :nth-child(2) {
+  border-radius: 16px !important;
+}
+/* Bryan 20:57: los bordes iniciales (sin hover, amarillos en su
+   captura) deben ser como los bordes finales del centro (con hover,
+   rojos): las esquinas exteriores en reposo pasan de 8px a 16px.
+   Y en hover los 3 tiles llevan exactamente el mismo radio, 16px
+   (los laterales bajan de 24px a 16px). El centro no se toca.
+   Bryan 21:00: los bordes interiores de los laterales (rojo) siguen
+   viéndose mal. Causa: los laterales medían 64px de alto y el centro
+   60px, así que sus esquinas no alineaban verticalmente (2px arriba
+   y abajo). Los laterales pasan a 60px (margen/padding vertical
+   16px -> 14px) para igualar al centro. El centro NO se toca. */
+
+/* v10.3.10 (2026-11-19): las cards de canal de voz (headerSimple,
+   las 2 de arriba: avatar + nombre + "In a Voice Channel") llevan
+   el mismo dividido en tiles que las de juego, pero en 2 segmentos
+   (avatar y texto, no hay icono). Mismo fondo blanco transparente
+   0.15, mismos radios (izquierda solo izquierda, derecha solo
+   derecha) y misma separación en hover (gap 12px). Estructura
+   (diagnóstico 19:30): headerSimple con 2 hijos, avatar wrapper
+   32x32 y texto 217x38; body/section en 0, ya ocultos. El padding
+   hacia el centro es mínimo (0px) y el de los bordes 12px como en
+   las de juego, para que el elemento de la derecha tenga el mismo
+   tamaño horizontal que las de abajo (Bryan 19:42): con el margen
+   de 10px quedaba 2px corto en cada borde. El nombre largo
+   ("tigretito and EpicSpartanRyan", 217px) cabe justo (el tile de
+   texto queda en ~213px de contenido, apenas ~1 carácter de
+   recorte en el peor caso). El headerSimple lleva padding 12px
+   explícito (como headerFull): Discord le pone 16px por defecto
+   y con ese padding los márgenes de -12px dejaban los tiles 4px
+   cortos en cada borde, por eso el cambio de -10px a -12px no se
+   notó (Bryan 19:47: "sigue siendo exactamente lo mismo"). */
+[class*="nowPlayingColumn"] [class*="itemCard"]:has([class*="headerSimple_"]),
+[class*="nowPlayingColumn"] [class*="itemCard"]:has([class*="headerSimple_"]) > div {
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  padding: 12px !important;
+  transition: gap 0.2s ease !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerSimple_"] {
+  gap: 12px !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] > :first-child,
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] > :last-child {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: background 0.2s ease, border-radius 0.2s ease, padding 0.2s ease, margin 0.2s ease !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] > :first-child {
+  margin: -16px 0 -16px -12px !important;
+  padding: 16px 0 16px 12px !important;
+  border-radius: 8px 0 0 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] > :last-child {
+  margin: -16px -12px -16px 0 !important;
+  padding: 16px 12px 16px 0 !important;
+  border-radius: 0 8px 8px 0 !important;
+  flex-grow: 1 !important;
+  min-width: 0 !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerSimple_"] > :first-child,
+[class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerSimple_"] > :last-child {
+  border-radius: 8px !important;
 }
 
 /* Botón Gift (regalar Nitro) en la lista de amigos.
@@ -1296,11 +1516,16 @@ nav[class*="guilds_"] [class*="focusFill_"] use {
 
 /* Tarjetas de Active Now: quitar el texto de actividad de
    abajo (p. ej. "Minecraft – 3h"), dejando solo el nombre;
-   y hacer el icono de la derecha un 33% más grande. */
+   y hacer el icono de la derecha un 33% más grande. El
+   scale solo va en el img DENTRO del div (juegos): si se
+   aplica al img suelto (YouTube/Modrinth/GeForce NOW/
+   Premiere) escala todo el tile de 64 a 85px y se solapa
+   10.6px con el nombre (diagnóstico 19:25). */
 [class*="nowPlayingColumn"] [class*="headerFull"] [class*="clickable_"] [class*="textContent_"] {
   display: none !important;
 }
-[class*="nowPlayingColumn"] [class*="headerIcon_"] {
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :last-child img[class*="headerIcon_"],
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :last-child svg[class*="headerIcon_"] {
   transform: scale(1.33) !important;
 }
 
