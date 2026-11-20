@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 11.0.2
+  * @version 11.0.3
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -1271,45 +1271,9 @@ svg:has(foreignObject[mask*="svg-mask-avatar-status"]) > circle {
   display: none !important;
 }
 
-/* v10.3.4 (2026-11-19): efecto de las tarjetas del CodePen en la lista
-   central de amigos: la fila con hover se expande (scale 1.1) y las
-   demás se ven borrosas (blur 6px) y un poco más chicas (scale 0.9),
-   con transición de 200ms. El blur solo aplica cuando alguna fila
-   tiene hover (:has), para que no se borre toda la lista al pasar el
-   mouse por un divisor. transform-origin a la izquierda para que el
-   avatar no se recorte al crecer (la fila ocupa todo el ancho).
-   Ajuste 16:54: la transición era de 400ms y se sentía trabada/lenta;
-   bajó a 200ms y se agregó will-change para que siga al mouse.
-   Ajuste 16:57: el blur seguía pesado (sí, es caro: animar el blur
-   re-renderiza cada fila en cada frame); bajó de 10px a 6px y se quitó
-   el fondo de hover de Discord (background: transparent), así la fila
-   ya no cambia de color al hover, solo crece.
-   Ajuste 17:00: seguía sintiéndose clogged; el blur animado era el
-   cuello de botella. El blur ya no se anima: se quitó filter de la
-   transición, así aparece de golpe (una sola rasterización) y solo la
-   escala anima (transform, barato, en el compositor). will-change
-   quedó solo en transform.
-   Ajuste 17:01: Bryan prefirió quitar el blur del todo y que los
-   demás elementos se hagan más transparentes. Sí, opacity es mucho
-   más barato que blur: es propiedad del compositor como transform,
-   no re-renderiza nada. Las filas no-hover quedan en opacity 0.4
-   (se desvanecen) y la escala sigue igual.
-   Ajuste 17:04: a Bryan no le gusta que las demás filas se hagan más
-   chicas, así que ya no cambian de forma en nada (se quitó el scale
-   0.9, solo se desvanecen a opacity 0.4) y la animación se hizo más
-   rápida: transición de 200ms a 120ms. */
-[class*="peopleListItem_"] {
-  transition: transform 120ms ease, opacity 120ms ease !important;
-  transform-origin: left center !important;
-  will-change: transform, opacity !important;
-}
-[class*="peopleListItem_"]:hover {
-  background: transparent !important;
-  transform: scale(1.1, 1.1) !important;
-}
-[class*="peopleList_"]:has([class*="peopleListItem_"]:hover) [class*="peopleListItem_"]:not(:hover) {
-  opacity: 0.4 !important;
-}
+/* Bryan 21:40: el efecto hover de la lista de amigos (v10.3.4: la fila
+   con hover crecía a scale 1.1 y las demás se desvanecían a opacity
+   0.4) se quitó por completo: era costoso y se veía con lag. */
 
 /* El texto de ayuda ("Message @Makki") en el cuadro de mensaje:
    no se muestra, es redundante. */
