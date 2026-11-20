@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 11.0.7
+  * @version 11.0.8
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -537,6 +537,30 @@ header[class*="headerFull"] ~ section[class*="section_"] {
   width: 320px !important;
   min-width: 320px !important;
   max-width: 320px !important;
+}
+/* v11.0.8 (2026-11-20): fondo glassy para el chat flotante encima del
+   stream. Bryan 00:23: "sigue igual, mejor rollback a 11.0.7, quiero
+   que trabajemos en otra cosa, cuando este chat quede encima del
+   stream, quiero que sea con fondo glassy" — se hace rollback del
+   intento de colapso de Active Now (v11.0.8 anterior, nunca se hizo
+   commit, el panel colapsaba a viewport ~1200px por regla de Discord
+   y ni la especificidad 2,2,2 lo evitó) y se añade esta función
+   nueva. Reutiliza el número 11.0.8 porque el anterior nunca se
+   hizo commit. El chat flotante (chatLayerWrapper / container
+   floating, 450px, encima del stream) tenía fondo sólido; ahora es
+   glassy (blanco 0.08 + blur 10px) en la capa del contenedor
+   flotante, y el header y el contenido del chat dentro de él son
+   transparentes para que se vea el stream difuminado detrás.
+   Bryan 00:28: "blur de 16 pixeles mejor" — blur subido a 16px
+   (sin subir versión, sigue 11.0.8). */
+div[class*="chatLayerWrapper_"] > div[class*="container_"][class*="floating_"]:not([class*="chatTarget_"]) {
+  background: rgba(255,255,255,0.08) !important;
+  backdrop-filter: blur(16px) !important;
+}
+div[class*="chatLayerWrapper_"] [class*="container_ybUK7Z"],
+div[class*="chatLayerWrapper_"] [class*="chat_"]:not([class*="chatTarget_"]):not([class*="chatLayerWrapper_"]) {
+  background-color: transparent !important;
+  background-image: none !important;
 }
 [class*="nowPlayingColumn"] [class*="scrollerBase"] {
   padding: 4px 6px 12px !important;
