@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 11.0.5
+  * @version 11.0.6
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -797,7 +797,8 @@ header[class*="headerFull"] ~ section[class*="section_"] {
    un 50% mas rapida" — todas las transiciones de la animación de
    las tarjetas (gap del header, tiles, y transform de la tarjeta)
    pasan de 0.2s a 0.1s. Solo las de Active Now; la transición de
-   ancho de la lista de miembros (0.2s ease-out) no se toca. */
+   ancho de la lista de miembros (0.2s ease-out) no se toca.
+*/
 [class*="nowPlayingColumn"] [class*="itemCard"] {
   transition: transform 0.1s ease !important;
 }
@@ -1815,6 +1816,24 @@ button[aria-label="Noise Suppression powered by Krisp"] {
    el ancho sin hueco a la derecha. */
 [class*="actionButtons_"] {
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+/* v11.0.6 (2026-11-19): Bryan: en el panel de voz, cuando no se
+   puede transmitir cámara ni stremear, los botones de Video y
+   Compartir pantalla salen deshabilitados (grises) y ocupan
+   sitio. Se esconden por completo: cuando están deshabilitados
+   Discord los envuelve en un span disabledButtonWrapper, así que
+   esconder ese wrapper solo los quita cuando están deshabilitados;
+   cuando sí se puede transmitir, no llevan el wrapper y se ven
+   normal. La regla de :first-child ya escondía el Video cuando
+   estaba habilitado, pero no cuando estaba deshabilitado (envuelto
+   en span, ya no es button:first-child). Y cuando solo queda
+   Actividades (los otros dos fuera), ocupa las 2 columnas con
+   :only-of-type para que no quede hueco a la derecha. */
+[class*="actionButtons_"] [class*="disabledButtonWrapper_"] {
+  display: none !important;
+}
+[class*="actionButtons_"] > button:only-of-type {
+  grid-column: 1 / -1 !important;
 }
 
 /* ============ Miniatura de stream (PiP): limpia ============ */
