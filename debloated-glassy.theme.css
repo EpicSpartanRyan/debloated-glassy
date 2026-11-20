@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 11.1.0
+  * @version 11.1.1
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -90,10 +90,7 @@ article.embedWrapper_b7e1cb.embedFlexGrow_b7e1cb.embedFull_XyW1ZT.embed_XyW1ZT.m
 .markup_ku1OHH blockquote, .markup_ku1OHH pre {
   max-width: 100%;
 }
-.avatar_2i8Bfm:hover.clickable_2i8Bfm:hover {
-  transform: scale(1.2) rotate(360deg);
-  transition: width 0.5s ease, height 0.5s ease, transform 0.5s ease;
-}
+/* v11.1.1 (2026-11-20): se quitó el efecto de giro y escala al pasar el mouse sobre los avatares. */
 .theme-dark .container_g6VwXp {
   border-radius: inherit;
 }
