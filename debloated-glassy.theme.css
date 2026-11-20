@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 11.0.1
+  * @version 11.0.2
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -628,7 +628,7 @@ header[class*="headerFull"] ~ section[class*="section_"] {
 }
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :first-child {
   margin: -14px 0 -14px -12px !important;
-  padding: 14px 16px 14px 16px !important;
+  padding: 14px 22px 14px 16px !important;
   border-radius: 16px 0 0 16px !important;
   display: flex !important;
   align-items: center !important;
@@ -661,21 +661,31 @@ header[class*="headerFull"] ~ section[class*="section_"] {
 /* Bryan 21:27: el texto no debe moverse al hacer hover en ninguna
    tarjeta; desde el inicio ya debe estar en su posición final. Al
    abrirse el gap (0 → 12px) el tile del centro se desplaza 12px a la
-   derecha, así que en reposo su padding izquierdo es 12px mayor
-   (juego: 20px; voz: 20px) y en hover vuelve a 8px. El tile se mueve
-   +12px y el texto -12px dentro de él, así que el texto queda fijo
-   en su posición final desde el inicio. El padding anima con la misma
-   transición de 0.2s que el gap, así que no hay salto. */
+   derecha, así que en reposo su padding izquierdo es mayor que en
+   hover y en hover vuelve a 8px. El tile se mueve y el texto se
+   desplaza lo mismo dentro de él en sentido contrario, así que el
+   texto queda fijo en su posición final desde el inicio. El padding
+   anima con la misma transición de 0.2s que el gap, así que no hay
+   salto. Bryan 21:34: el centro se contraía 24px al hacer hover (dos
+   gaps de 12px); ahora solo se contrae la mitad (12px). Los laterales
+   son 6px más anchos hacia el centro en reposo (padding interior
+   22px en vez de 16px), así que el centro ya empieza 12px más
+   estrecho; en hover los laterales vuelven a 16px y el gap abre 12px,
+   así que el centro solo pierde 12px. Como el avatar en reposo es
+   6px más ancho, el padding izquierdo del texto en reposo es 14px
+   (no 20px) para que el texto siga fijo en su posición final. El
+   contenido del avatar/icono no se mueve: el padding extra es solo
+   hacia el centro, su caja de contenido queda en el mismo sitio. */
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :nth-child(2) {
   margin: -20px 0 !important;
-  padding: 20px 8px 20px 20px !important;
+  padding: 20px 8px 20px 14px !important;
   border-radius: 0 !important;
   flex-grow: 1 !important;
   min-width: 0 !important;
 }
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :last-child {
   margin: -14px -12px -14px 0 !important;
-  padding: 14px 16px 14px 16px !important;
+  padding: 14px 16px 14px 22px !important;
   border-radius: 0 16px 16px 0 !important;
   display: flex !important;
   align-items: center !important;
@@ -705,6 +715,7 @@ header[class*="headerFull"] ~ section[class*="section_"] {
 [class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerFull"] > :first-child,
 [class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerFull"] > :last-child {
   border-radius: 16px !important;
+  padding: 14px 16px 14px 16px !important;
 }
 [class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerFull"] > :nth-child(2) {
   border-radius: 16px !important;
@@ -795,7 +806,7 @@ header[class*="headerFull"] ~ section[class*="section_"] {
 }
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] > :first-child {
   margin: -14px 0 -14px -12px !important;
-  padding: 14px 16px 14px 16px !important;
+  padding: 14px 22px 14px 16px !important;
   border-radius: 16px 0 0 16px !important;
   display: flex !important;
   align-items: center !important;
@@ -804,7 +815,7 @@ header[class*="headerFull"] ~ section[class*="section_"] {
 }
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] > :last-child {
   margin: -11px -12px -11px 0 !important;
-  padding: 11px 12px 11px 20px !important;
+  padding: 11px 12px 11px 14px !important;
   border-radius: 0 16px 16px 0 !important;
   flex-grow: 1 !important;
   min-width: 0 !important;
@@ -812,6 +823,9 @@ header[class*="headerFull"] ~ section[class*="section_"] {
 [class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerSimple_"] > :first-child,
 [class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerSimple_"] > :last-child {
   border-radius: 16px !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerSimple_"] > :first-child {
+  padding: 14px 16px 14px 16px !important;
 }
 [class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerSimple_"] > :last-child {
   padding: 11px 12px 11px 8px !important;
