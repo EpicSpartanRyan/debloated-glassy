@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 11.0.8
+  * @version 11.0.9
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -1387,6 +1387,26 @@ svg:has(foreignObject[mask*="svg-mask-avatar-status"]) > circle {
    no se muestran, solo queda el nombre. */
 [class*="peopleListItem"] [class*="subtext_"] {
   display: none !important;
+}
+
+/* v11.0.9 (2026-11-20): quitar las líneas divisorias entre cada amigo
+   en la lista central (Bryan 00:44: "sin ellas se ve más aireado").
+   CORRECCIÓN (Bryan 00:46): no era un borde del peopleListItem — es
+   un elemento aparte, <div class="divider_y75PxA"> (737 × 0.99, 1px,
+   background var(--border-subtle)), hermano de cada fila. Se oculta
+   ese divisor dentro de la lista de amigos. La regla de bordes no
+   funcionó y se quita. */
+[class*="peopleList_"] [class*="divider_y75PxA"] {
+  display: none !important;
+}
+
+/* v11.0.9 (2026-11-20): filas de amigos más compactas (Bryan 00:47:
+   "sigue habiendo bastante espacio entre los elementos"). Cada fila
+   .peopleListItem mide 61px (estilo en línea de Discord); se baja a
+   48px para juntar las filas. El avatar es de 32px, así que cabe
+   con 8px arriba y abajo. */
+[class*="peopleListItem"] {
+  height: 48px !important;
 }
 
 /* Bryan 21:40: el efecto hover de la lista de amigos (v10.3.4: la fila
