@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 11.0.0
+  * @version 11.0.1
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -628,29 +628,54 @@ header[class*="headerFull"] ~ section[class*="section_"] {
 }
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :first-child {
   margin: -14px 0 -14px -12px !important;
-  padding: 14px 20px 14px 12px !important;
+  padding: 14px 16px 14px 16px !important;
   border-radius: 16px 0 0 16px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-shrink: 0 !important;
 }
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :first-child foreignObject,
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] > :first-child foreignObject {
+  transform: translate(4px, 4px) !important;
+}
+/* Bryan 21:19 (diagnóstico de consola): el avatar (IMG 32x32) estaba
+   desplazado -4px en X y -4px en Y dentro de su tile (el icono estaba
+   en 0,0). El avatar vive dentro de un wrapper de 40x40 (reserva
+   espacio para el punto de estado) y la imagen de 32x32 queda en la
+   esquina superior izquierda. El intento de mover la IMG con transform
+   (21:21) la deformó (Bryan 21:23: "se ven feas, como ovaladas
+   diagonalmente") porque la IMG se recorta contra su contenedor al
+   desplazarla. En su lugar se mueve el foreignObject entero (+4px en
+   X y +4px en Y): el contenedor se centra y la imagen viaja con él
+   sin recortarse. Bryan 21:25: "bastante mejor, solo que en la tarjeta
+   de arriba sigue teniendo su displacement" — la tarjeta de voz (Nova,
+   arriba) tenía el mismo desplazamiento; la regla ahora cubre también
+   el avatar de las tarjetas de voz (headerSimple). */
 /* v10.3.11 (2026-11-19): el tile del centro (nombre) se probó con
    el mismo radio (8px) que los exteriores (Bryan 19:52), pero al ir
    JUNTOS (gap 0) las esquinas redondas del centro recortan las
    juntas y se ven como cortes/muescas (Bryan 19:54). Por eso el
    centro vuelve a ser cuadrado (0) en reposo y solo se redondea
    en hover, cuando los tiles ya están separados y no hay junta. */
+/* Bryan 21:27: el texto no debe moverse al hacer hover en ninguna
+   tarjeta; desde el inicio ya debe estar en su posición final. Al
+   abrirse el gap (0 → 12px) el tile del centro se desplaza 12px a la
+   derecha, así que en reposo su padding izquierdo es 12px mayor
+   (juego: 20px; voz: 20px) y en hover vuelve a 8px. El tile se mueve
+   +12px y el texto -12px dentro de él, así que el texto queda fijo
+   en su posición final desde el inicio. El padding anima con la misma
+   transición de 0.2s que el gap, así que no hay salto. */
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :nth-child(2) {
   margin: -20px 0 !important;
-  padding: 20px 8px !important;
+  padding: 20px 8px 20px 20px !important;
   border-radius: 0 !important;
   flex-grow: 1 !important;
   min-width: 0 !important;
 }
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :last-child {
   margin: -14px -12px -14px 0 !important;
-  padding: 14px 12px 14px 20px !important;
+  padding: 14px 16px 14px 16px !important;
   border-radius: 0 16px 16px 0 !important;
   display: flex !important;
   align-items: center !important;
@@ -668,7 +693,7 @@ header[class*="headerFull"] ~ section[class*="section_"] {
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > img[class*="headerIcon_"],
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > svg[class*="headerIcon_"] {
   width: 64px !important;
-  height: 64px !important;
+  height: 60px !important;
   box-sizing: border-box !important;
   object-fit: contain !important;
   flex-shrink: 0 !important;
@@ -683,6 +708,7 @@ header[class*="headerFull"] ~ section[class*="section_"] {
 }
 [class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerFull"] > :nth-child(2) {
   border-radius: 16px !important;
+  padding: 20px 8px !important;
 }
 /* Bryan 20:57: los bordes iniciales (sin hover, amarillos en su
    captura) deben ser como los bordes finales del centro (con hover,
@@ -693,7 +719,16 @@ header[class*="headerFull"] ~ section[class*="section_"] {
    viéndose mal. Causa: los laterales medían 64px de alto y el centro
    60px, así que sus esquinas no alineaban verticalmente (2px arriba
    y abajo). Los laterales pasan a 60px (margen/padding vertical
-   16px -> 14px) para igualar al centro. El centro NO se toca. */
+   16px -> 14px) para igualar al centro. El centro NO se toca.
+   Bryan 21:15: los iconos/imágenes dentro de las tarjetas no están
+   centrados, tienen un desplazamiento feo. Causa: el padding
+   horizontal de los tiles laterales era asimétrico (20px hacia el
+   centro, 12px hacia afuera), así que el contenido quedaba 4px
+   desplazado del centro del tile (avatar 4px a la izquierda, icono
+   4px a la derecha). Ahora el padding horizontal es simétrico, 16px
+   a cada lado, y el contenido queda centrado. El tile sigue midiendo
+   64px de ancho. Los iconos sueltos (img/svg headerIcon) pasan de
+   64px a 60px de alto para igualar a los demás tiles. */
 
 /* v10.3.10 (2026-11-19): las cards de canal de voz (headerSimple,
    las 2 de arriba: avatar + nombre + "In a Voice Channel") llevan
@@ -713,9 +748,24 @@ header[class*="headerFull"] ~ section[class*="section_"] {
    explícito (como headerFull): Discord le pone 16px por defecto
    y con ese padding los márgenes de -12px dejaban los tiles 4px
    cortos en cada borde, por eso el cambio de -10px a -12px no se
-   notó (Bryan 19:47: "sigue siendo exactamente lo mismo"). */
+   notó (Bryan 19:47: "sigue siendo exactamente lo mismo").
+   v11.0.0 (Bryan 21:07): la card de voz no se veía bien — su primer
+   elemento (avatar) medía 44px de ancho y las de juego 64px, los
+   bordes eran 8px contra 16px de las de juego, y quedaba un segundo
+   fondo (el headerSimple mismo tenía fondo). Ahora el tile de avatar
+   es igual que el de juego (64px de ancho, 60px de alto: margen
+   -14px, padding 14px 20px 14px 12px), el tile de texto también mide
+   60px de alto (texto 38px + padding 11px: margen -11px, padding
+   11px 12px 11px 0), los radios son 16px como en las de juego
+   (exteriores 16px en reposo, 16px todos en hover), y el
+   headerSimple queda transparente (regla transparente extendida
+   + background transparent en el propio headerSimple).
+   Bryan 21:11: el texto de la tarjeta de voz quedaba muy pegado a
+   la izquierda (padding izquierdo 0). Ahora lleva 8px a la
+   izquierda, igual que el tile del centro de las de juego. */
 [class*="nowPlayingColumn"] [class*="itemCard"]:has([class*="headerSimple_"]),
-[class*="nowPlayingColumn"] [class*="itemCard"]:has([class*="headerSimple_"]) > div {
+[class*="nowPlayingColumn"] [class*="itemCard"]:has([class*="headerSimple_"]) > div,
+[class*="nowPlayingColumn"] [class*="itemCard"]:has([class*="headerSimple_"]) [class*="headerSimple_"] {
   background: transparent !important;
   background-color: transparent !important;
   backdrop-filter: none !important;
@@ -727,6 +777,9 @@ header[class*="headerFull"] ~ section[class*="section_"] {
   align-items: center !important;
   gap: 0 !important;
   padding: 12px !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
   transition: gap 0.2s ease !important;
 }
 [class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerSimple_"] {
@@ -741,24 +794,27 @@ header[class*="headerFull"] ~ section[class*="section_"] {
   transition: background 0.2s ease, border-radius 0.2s ease, padding 0.2s ease, margin 0.2s ease !important;
 }
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] > :first-child {
-  margin: -16px 0 -16px -12px !important;
-  padding: 16px 0 16px 12px !important;
-  border-radius: 8px 0 0 8px !important;
+  margin: -14px 0 -14px -12px !important;
+  padding: 14px 16px 14px 16px !important;
+  border-radius: 16px 0 0 16px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-shrink: 0 !important;
 }
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] > :last-child {
-  margin: -16px -12px -16px 0 !important;
-  padding: 16px 12px 16px 0 !important;
-  border-radius: 0 8px 8px 0 !important;
+  margin: -11px -12px -11px 0 !important;
+  padding: 11px 12px 11px 20px !important;
+  border-radius: 0 16px 16px 0 !important;
   flex-grow: 1 !important;
   min-width: 0 !important;
 }
 [class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerSimple_"] > :first-child,
 [class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerSimple_"] > :last-child {
-  border-radius: 8px !important;
+  border-radius: 16px !important;
+}
+[class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerSimple_"] > :last-child {
+  padding: 11px 12px 11px 8px !important;
 }
 
 /* Botón Gift (regalar Nitro) en la lista de amigos.
