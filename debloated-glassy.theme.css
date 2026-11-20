@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 11.0.9
+  * @version 11.1.0
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -645,7 +645,7 @@ div[class*="chatLayerWrapper_"] [class*="chat_"]:not([class*="chatTarget_"]):not
   backdrop-filter: none !important;
   border: none !important;
   box-shadow: none !important;
-  transition: background 0.1s ease, border-radius 0.1s ease, padding 0.1s ease, margin 0.1s ease !important;
+  transition: background 0.1s ease, padding 0.1s ease, margin 0.1s ease !important;
 }
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :nth-child(3):not(:last-child) {
   display: none !important;
@@ -911,16 +911,15 @@ div[class*="chatLayerWrapper_"] [class*="chat_"]:not([class*="chatTarget_"]):not
   backdrop-filter: none !important;
   transition: gap 0.1s ease !important;
 }
-[class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerSimple_"] {
-  gap: 8px !important;
-}
+/* Las tarjetas de voz NO se separan en hover: quedan como una sola
+   tarjeta redondeada (solo bordes exteriores), sin bordes interiores. */
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] > :first-child,
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] > :last-child {
   background: rgba(255, 255, 255, 0.15) !important;
   backdrop-filter: none !important;
   border: none !important;
   box-shadow: none !important;
-  transition: background 0.1s ease, border-radius 0.1s ease, padding 0.1s ease, margin 0.1s ease !important;
+  transition: background 0.1s ease, padding 0.1s ease, margin 0.1s ease !important;
 }
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] > :first-child {
   margin: -14px 0 -14px -12px !important;
@@ -930,23 +929,132 @@ div[class*="chatLayerWrapper_"] [class*="chat_"]:not([class*="chatTarget_"]):not
   align-items: center !important;
   justify-content: center !important;
   flex-shrink: 0 !important;
+  height: 40px !important;
 }
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] > :last-child {
-  margin: -11px -12px -11px 0 !important;
-  padding: 11px 12px 11px 10px !important;
+  margin: -14px -12px -14px 0 !important;
+  padding: 24px 12px 24px 10px !important;
   border-radius: 0 16px 16px 0 !important;
   flex-grow: 1 !important;
   min-width: 0 !important;
+  height: 68px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
 }
-[class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerSimple_"] > :first-child,
-[class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerSimple_"] > :last-child {
-  border-radius: 16px !important;
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] > :last-child > * {
+  min-width: 0 !important;
 }
-[class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerSimple_"] > :first-child {
-  padding: 14px 16px 14px 16px !important;
+
+
+
+/* v11.1.0 (2026-11-20): ajustes a las tarjetas de Active Now
+   (Bryan 00:58): (1) quitar el "In a Voice Channel" de las tarjetas
+   de voz; (2) la foto de perfil un 5% más grande; (3) el icono de
+   la actividad un 5% más pequeño.
+   CORRECCIÓN (Bryan 01:03, con el HTML completo de las tarjetas):
+   (1) el "In a Voice Channel" NO lleva clase subtext_ — es un
+   div.textContent_o3hXTo con clase body-sm/normal_RAOoio, segundo
+   hijo del texto en headerSimple. Se oculta por textContent +
+   body-sm dentro de headerSimple (así no toca el texto de actividad
+   "Fortnite - just now" de las de juego, que también es body-sm
+   pero vive en headerFull). (2) El avatar NO era un descendiente
+   del primer tile — el primer tile ES el wrapper del avatar
+   (div.wrapper_XpIUHy.headerAvatar_o3hXTo, 32px, con el SVG 40x40
+   dentro); el selector anterior buscaba un descendiente con
+   avatar_+wrapper_ y no encontró nada. Ahora se escalan los SVG
+   dentro del headerAvatar (foto + decoración, juntos). (3) El icono
+   tiene DOS estructuras: en la mayoría va dentro de un div.clickable
+   (último tile, img.headerIcon dentro) y en algunas (Meme Plug) el
+   img.headerIcon ES hijo directo del header (último tile). La regla
+   cubre ambas.
+   CORRECCIÓN 2 (Bryan 01:11, captura: "algunas cosas se ven rotas"):
+   al quitar el "In a Voice Channel" el tile de texto de voz quedó de
+   una sola línea (~41px) y ya no iguala al tile de avatar (~68px):
+   se ve el escalón entre tiles. Se sube el padding vertical del tile
+   de texto de 11px a 24px (reposo y hover) y su margen negativo de
+   -11px a -14px, igual que el avatar, para que vuelvan a medir lo
+   mismo. Y el img.headerIcon hijo directo NO se escala: en esas
+   tarjetas (Meme Plug) el img ES el tile, y al escalarlo el tile se
+   achica y se despega del texto; solo se escala el icono dentro del
+   tile, que es la mayoría.
+   CORRECCIÓN 3 (Bryan 01:14, captura: "el redondeo izquierdo del
+   segundo elemento de la segunda tarjeta se ve roto"): el padding de
+   24px no bastó — el tile de texto seguía más bajo que el de avatar
+   porque la altura de línea real no es la supuesta, así que al
+   separarse en hover los redondeos no alineaban. Ahora el tile de
+   texto tiene altura fija de 68px (igual que el tile de avatar:
+   40px de foto + 28px de padding) con box-sizing border-box, y es
+   flex con align-items center para centrar el nombre; sus hijos
+   llevan min-width 0 para que el truncado del nombre no se rompa.
+   CORRECCIÓN 4 (Bryan 01:17, captura con el borde izquierdo marcado
+   en rojo: "siguen estando roto esos bordes"): el redondeo izquierdo
+   se veía a medias porque en reposo es 0 y en hover pasa a 16px con
+   una transición de 0.1s, mientras el derecho ya es 16px en reposo
+   y no cambia — durante la animación el izquierdo queda parcial y
+   asimétrico. Se quitó border-radius de la transición de los tiles
+   (juego y voz): ahora el radio cambia de golpe al entrar/salir el
+   hover, sin estado intermedio; el gap y el padding siguen
+   animándose suave.
+   CORRECCIÓN 5 (Bryan 01:22: "sigue estando roto no se ve redondo"):
+   el tile de texto tenía altura fija de 68px pero el de avatar no —
+   su altura salía del contenido y no igualaba, así que los dos tiles
+   seguían desalineados y el redondeo izquierdo no se veía redondo.
+   Ahora el tile de avatar de voz TAMBIÉN tiene altura fija de 68px
+   con box-sizing border-box: ambos tiles miden exactamente lo mismo
+   por construcción, no por suponer la altura de línea.
+   CORRECCIÓN 6 (Bryan 01:24: "ahora esta incluso peor"): el
+   box-sizing border-box en el avatar rompió su ancho — el wrapper
+   trae inline width: 32px, y con border-box el ancho total quedaba
+   en 32px (menos que el padding), así que el tile se hizo una
+   píldora flaca. Se quitó el box-sizing y la altura ahora es
+   40px en content-box (40 + 14 + 14 de padding = 68px total), que
+   pisa el inline height: 32px y deja el tile en 68px sin tocar el
+   ancho. El tile de texto sigue en 68px border-box (no tiene inline
+   width, ahí no hay conflicto).
+   CORRECCIÓN 7 (Bryan 01:27: "los bordes de los 2 estan feos,
+   deberian ser como los bordes exteriores"): en hover las esquinas
+   interiores (derecha del avatar, izquierda del texto) no se veían
+   redondas como las exteriores aunque el shorthand decía 16px.
+   Se fijan en longhand (border-top/bottom-left/right-radius) con
+   mayor especificidad (:hover también en headerSimple) para que el
+   redondeo interior sea 16px seguro, igual que el exterior.
+   CORRECCIÓN 8 (Bryan 01:30: "no, sigue estando feo"; medición por
+   consola 01:32): la medición confirma que el CSS ya estaba bien —
+   hover true, gap 8px, los dos tiles a 16px en las cuatro esquinas,
+   ambos de 70.0px de alto y con el mismo top (164.7). El problema
+   es visual: con solo 8px de gap las dos esquinas interiores de
+   16px quedan apretadas y no se leen como las exteriores, que
+   tienen espacio abierto. Se sube el gap en hover de las tarjetas
+   de voz a 16px para que las esquinas interiores respiren y se
+   vean como las exteriores. Solo voz (headerSimple); juego sigue
+   en 8px.
+   CORRECCIÓN 9 (Bryan 01:34: "no, sigue igual, esto ya me esta
+   hartando"): ni el gap de 16px lo arregló — el problema no era el
+   radio ni el gap, era la separación en sí: al partir la tarjeta
+   de voz en dos tiles aparecen bordes interiores que nunca se ven
+   como los exteriores. Decisión: las tarjetas de voz YA NO se
+   separan en hover, quedan como una sola tarjeta redondeada (solo
+   bordes exteriores). Se eliminan el gap en hover, el cambio de
+   radio en hover, el longhand de CORRECCIÓN 7 y los cambios de
+   padding en hover de headerSimple; la tarjeta solo crece 3% en
+   hover (regla general). Solo voz; juego sigue separándose en 8px. */
+/* (1) "In a Voice Channel" fuera. */
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] [class*="textContent_"][class*="body-sm"] {
+  display: none !important;
 }
-[class*="nowPlayingColumn"] [class*="itemCard"]:hover [class*="headerSimple_"] > :last-child {
-  padding: 11px 12px 11px 8px !important;
+/* (2) Foto de perfil 5% más grande. */
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] [class*="headerAvatar_"] svg,
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerSimple_"] [class*="headerAvatar_"] svg {
+  transform: scale(1.05) !important;
+}
+/* (3) Icono de la actividad 5% más pequeño. Solo el img/svg DENTRO
+   del último tile (la mayoría de tarjetas); el img.headerIcon hijo
+   directo NO se escala — en esas tarjetas (Meme Plug) el img ES el
+   tile, y escalarlo achica el tile y lo despega del texto. */
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :last-child img,
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :last-child svg {
+  transform: scale(0.95) !important;
 }
 
 /* Botón Gift (regalar Nitro) en la lista de amigos.
