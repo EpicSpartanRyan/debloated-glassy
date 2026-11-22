@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 11.1.1
+  * @version 11.1.2
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -93,6 +93,75 @@ article.embedWrapper_b7e1cb.embedFlexGrow_b7e1cb.embedFull_XyW1ZT.embed_XyW1ZT.m
 /* v11.1.1 (2026-11-20): se quitó el efecto de giro y escala al pasar el mouse sobre los avatares. */
 .theme-dark .container_g6VwXp {
   border-radius: inherit;
+}
+
+/* v11.1.2 (2026-11-22): Bryan: la barra superior de la ventana
+   (bar_3zSH5d: título, atrás/adelante, Inbox, Help, min/max/cerrar)
+   colapsada como en Zen Browser: queda una franja fina de 8px y al
+   pasar el mouse se expande a su altura normal. El colapso tarda
+   0.45s en empezar para no cerrarse al cruzar el mouse por arriba;
+   la expansión es inmediata. Mientras está colapsada los botones
+   no se ven ni se pueden clicar (opacity + visibility + sin
+   pointer-events).
+   Arreglo (mismo v11.1.2, sin subir versión): el diagnóstico mostró
+   que la fila del grid de la app mide 32px fijos y no se achicaba
+   con la barra, así que el contenido no subía y el hover solo
+   respondía en la franja. Ahora la fila es de 8px (base_pog620,
+   misma plantilla con las líneas nombradas intactas) y la barra es
+   position absolute sobre el contenido: al expandirse se renderiza
+   encima, sin empujar nada hacia abajo.
+   Segundo arreglo (mismo v11.1.2): el diagnóstico mostró que la
+   fila del grid seguía en 32px (la regla por clase no casó) y que
+   la barra solo crecía a ~10-14px porque su altura dependía del
+   contenido. Ahora la fila se achica con :has() sobre el padre de
+   la barra y la barra tiene altura explícita (8px colapsada, 32px
+   al hover).
+   Se probó disparar el hover en una franja (4px, luego 12px) y
+   con una zona de disparo de 28px, pero ninguna funcionó en la
+   franja: el mouse no llega a la franja invisible. Bryan 04:18
+   pidió volver al estado que sí funcionaba (hover solo sobre los
+   botones): franja de 8px y fila del grid de 8px, sin
+   pointer-events forzado en la barra. */
+[class*="bar_3zSH5d"] {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 100 !important;
+  height: 8px !important;
+  max-height: 8px !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  transition: height 0.3s ease 0.45s, max-height 0.3s ease 0.45s !important;
+}
+[class*="bar_3zSH5d"]:hover {
+  height: 32px !important;
+  max-height: 32px !important;
+  transition-duration: 0.2s !important;
+  transition-delay: 0s !important;
+}
+[class*="bar_3zSH5d"] > * {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 0.2s ease, visibility 0s linear 0.2s !important;
+}
+[class*="bar_3zSH5d"]:hover > * {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transition: opacity 0.2s ease 0.05s, visibility 0s !important;
+}
+/* La fila de la barra en el grid de la app: de 32px a 8px, para que
+   el contenido suba hasta arriba. Se conserva la plantilla original
+   (filas con nombre y la fila de avisos en auto).
+   Nota: la clase con hash (base_pog620) no casó en el diagnóstico
+   (el querySelector devolvió null), así que se usa :has() sobre el
+   padre de la barra, que es el contenedor del grid; la regla por
+   clase queda como respaldo. */
+div:has(> [class*="bar_3zSH5d"]),
+[class*="base_pog620"] {
+  grid-template-rows: [top] 8px [titleBarEnd] auto [noticeEnd] 1fr [end] !important;
 }
 /* v10.2.2 (2026-11-19): Bryan: en los DMs la barra de texto no llegaba
    al borde derecho cuando el perfil de la derecha estaba cerrado.
