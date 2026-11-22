@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 11.1.2
+  * @version 11.1.3
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -2053,21 +2053,14 @@ button[aria-label="Noise Suppression powered by Krisp"] {
 [class*="actionButtons_"] > button:only-of-type {
   grid-column: 1 / -1 !important;
 }
-/* v11.0.7 (2026-11-19): Bryan: en el panel de voz, eliminar el
-   micrófono cuando está suprimido de voz (no puede hablar).
-   LIMITACIÓN HONESTA: el CSS no puede leer el texto oculto
-   "Suppressed" que es lo único que distingue "suprimido" de
-   "muteado por mí mismo" — el DOM y las clases son idénticos en
-   ambos casos (botón con redGlow, padre con hasColorGlow). Así
-   que esto esconde el micrófono (botón + chevron de opciones)
-   cuando tiene el brillo rojo, o sea, SIEMPRE que está muteado,
-   incluido cuando Bryan se mutea a sí mismo. En ese caso para
-   desmutearse hay que usar el atajo Ctrl+Shift+M (el botón no
-   estará visible para hacer click). Si le molesta, se puede
-   revertir. */
-[class*="audioButtonParent_"]:has([class*="redGlow_"]) {
-  display: none !important;
-}
+/* v11.0.7 (2026-11-19) REVERTIDO en v11.1.3 (2026-11-22): Bryan:
+   el micrófono desaparecía cuando se muteaba a sí mismo y no
+   podía desmutearse con click (solo Ctrl+Shift+M). La regla
+   escondía el botón con redGlow, pero el CSS no distingue
+   "suprimido" de "muteado por mí mismo", así que se quita: el
+   botón del micrófono ahora siempre se ve, incluido muteado.
+   (Regla eliminada: [class*="audioButtonParent_"]:has(
+   [class*="redGlow_"]) { display: none !important; }) */
 
 /* ============ Miniatura de stream (PiP): limpia ============ */
 /* Arriba a la izquierda: la flecha de volver a teatro y el
