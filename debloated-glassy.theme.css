@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 11.1.4
+  * @version 12.0.0
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -1750,6 +1750,28 @@ nav[class*="guilds_"] [class*="focusFill_"] use {
 [class*="buttons_g6VwXp"] > button {
   margin: 0 !important;
 }
+/* v12.0.0 (2026-11-22): micrófono y auriculares colapsados, aparecen
+   al pasar el mouse sobre el engranaje con desplazamiento hacia la
+   izquierda (translateX + fade). El engranaje queda fijo a la derecha;
+   el hover cubre todo el grupo de botones, así al mover el mouse del
+   engranaje a los botones no se cierran y se pueden clicar. */
+[class*="buttons_g6VwXp"] [class*="audioButtonParent"] {
+  max-width: 0 !important;
+  opacity: 0 !important;
+  transform: translateX(12px) !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: max-width 0.2s ease, opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease !important;
+}
+[class*="buttons_g6VwXp"]:hover [class*="audioButtonParent"] {
+  max-width: 48px !important;
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
 
 /* El encabezado "Active Now" encima de la columna: eliminado. */
 [class*="header_GNEh_C"] {
@@ -2256,6 +2278,25 @@ nav[class*="guilds_"]:hover {
 .vc-spotify-button-row .vc-spotify-button svg {
   height: 20px !important;
   width: 20px !important;
+}
+/* v12.0.0 (2026-11-22): controles de Spotify colapsados, aparecen al
+   pasar el mouse sobre el reproductor con animación hacia arriba
+   (translateY + fade). La barra de progreso sigue siempre visible. */
+#vc-spotify-player .vc-spotify-button-row {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  transform: translateY(10px) !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: max-height 0.2s ease, opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease !important;
+}
+#vc-spotify-player:hover .vc-spotify-button-row {
+  max-height: 40px !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
 }
 #vc-spotify-progress-bar [class*="bar_"]:has(> [class*="barFill_"]) {
   height: 14px !important;
