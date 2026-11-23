@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 11.1.3
+  * @version 11.1.4
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -801,6 +801,21 @@ div[class*="chatLayerWrapper_"] [class*="chat_"]:not([class*="chatTarget_"]):not
 [class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :last-child * {
   max-width: 32px !important;
   max-height: 32px !important;
+}
+/* v11.1.4 (2026-11-22): la tarjeta de voz/juego múltiple (tigretito, arriba)
+   usa multipleIconWrapper + SVG en vez de un img, y su tile derecho medía
+   58x54 en vez de 70x60 (diagnóstico de consola 18:28: el wrapper mide
+   ~26px y el svg 44px, así que el tile se encoge; el icono en sí mide
+   44x44, igual que los demás 43x43, no es el icono lo chico, es el tile).
+   El wrapper y su svg se fuerzan a la misma caja 32x32 que los iconos
+   img, así el tile queda en 70x60 como los demás. */
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :last-child [class*="multipleIconWrapper_"],
+[class*="nowPlayingColumn"] [class*="itemCard"] [class*="headerFull"] > :last-child [class*="multipleIconWrapper_"] svg {
+  width: 32px !important;
+  height: 32px !important;
+  max-width: 32px !important;
+  max-height: 32px !important;
+  flex-shrink: 0 !important;
 }
 /* Bryan 22:09: cuando la tarjeta ya está dividida (hover), los tiles
    son un 10% más grandes (scale 1.1) y llevan sombra de fondo
