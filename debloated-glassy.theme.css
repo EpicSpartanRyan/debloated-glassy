@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 12.2.0
+  * @version 12.3.0
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -3055,4 +3055,27 @@ div[class*="role_p3g15p"] {
 [class*="privateChannels_"] [class*="searchBar_"] button {
   background: rgba(255, 255, 255, 0.08) !important;
   backdrop-filter: blur(10px) !important;
+}
+
+/* ============ Barra de mensajes nuevos y "Jump to Present" glassy v12.3.0 ============ */
+/* v12.3.0 (2026-11-22): Bryan: al abrir un DM no queda enfocado en los
+   mensajes nuevos y tiene que hacer scroll. Un tema (solo CSS) no puede
+   mover el scroll: eso lo decide Discord. Lo que sí se puede es hacer
+   imposible de pasar por alto el botón que salta a los nuevos: la barra
+   superior "X new messages" (su botón es "Jump to last unread message")
+   y la píldora inferior "Jump to Present" ahora son glassy como el resto
+   del tema, con texto blanco: un clic y caes en los mensajes nuevos. */
+[class*="newMessagesBar_"] {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 12px !important;
+}
+[class*="newMessagesBar_"] [class*="barButtonBase_"] {
+  background: transparent !important;
+  color: #ffffff !important;
+}
+[class*="jumpToPresentBar_"] {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+  color: #ffffff !important;
 }
