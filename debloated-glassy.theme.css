@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 12.1.0
+  * @version 12.1.1
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -3010,4 +3010,13 @@ div[class*="role_p3g15p"] {
 }
 [class*="tooltip_"] * {
   color: #fff !important;
+}
+
+/* ============ DM: emoji de hojas junto al nombre fuera v12.1.1 ============ */
+/* v12.1.1 (2026-11-22): Bryan: en el encabezado del DM con Valen se ve
+   un emoji (🍃, :leaves:) junto al nombre, dentro del estado de
+   actividad del encabezado. Se oculta cualquier emoji ahí (no solo
+   las hojas, corrección de Bryan 19:15), no el resto del encabezado. */
+[class*="dmHeaderActivityStatus_"] img.emoji {
+  display: none !important;
 }
