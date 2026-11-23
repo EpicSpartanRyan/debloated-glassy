@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 12.0.0
+  * @version 12.1.0
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -2297,6 +2297,45 @@ nav[class*="guilds_"]:hover {
   transform: translateY(0) !important;
   visibility: visible !important;
   pointer-events: auto !important;
+}
+/* v12.1.0 (2026-11-22): mini portada de la canción junto a la barra de
+   progreso (como la del tema Modular). La portada vive en
+   #vc-spotify-info-wrapper, que estaba oculta: se muestra solo la
+   imagen (36px, bordes redondeados), centrada sobre la barra, y se
+   esconden título/artista/álbum. La barra deja 44px libres a la
+   izquierda con padding. Diagnóstico 19:03: la barra es
+   content-box con width 218.6px + padding-left 44px = 263px, se sale
+   36px a la derecha del panel (right 279 vs 243). Arreglo:
+   box-sizing border-box en la barra. Ajuste 19:03: aún más espacio
+   arriba (padding-top 14->20px, padding-bottom 10->12px). */
+#vc-spotify-player {
+  position: relative !important;
+  padding: 20px 8px 12px !important;
+}
+#vc-spotify-info-wrapper {
+  display: block !important;
+  position: absolute !important;
+  left: 8px !important;
+  top: 9px !important;
+  z-index: 2 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+#vc-spotify-info-wrapper #vc-spotify-titles {
+  display: none !important;
+}
+#vc-spotify-album-image {
+  display: block !important;
+  width: 36px !important;
+  height: 36px !important;
+  object-fit: cover !important;
+  border-radius: 10px !important;
+  margin: 0 !important;
+  pointer-events: none !important;
+}
+#vc-spotify-progress-bar {
+  box-sizing: border-box !important;
+  padding-left: 44px !important;
 }
 #vc-spotify-progress-bar [class*="bar_"]:has(> [class*="barFill_"]) {
   height: 14px !important;
