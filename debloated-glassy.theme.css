@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 12.1.2
+  * @version 12.2.0
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -3040,4 +3040,19 @@ div[class*="role_p3g15p"] {
    las hojas, corrección de Bryan 19:15), no el resto del encabezado. */
 [class*="dmHeaderActivityStatus_"] img.emoji {
   display: none !important;
+}
+
+/* ============ Botón de Friends y búsqueda del sidebar glassy v12.2.0 ============ */
+/* v12.2.0 (2026-11-22): Bryan: no le gustaba el fondo del botón de
+   Friends ni de la barra de búsqueda de arriba a la izquierda (fondo
+   sólido de Discord). Se les pone el mismo estilo glassy de la barra
+   de búsqueda del centro y de las cards de Active Now: fondo blanco
+   translúcido (rgba 0.08) + blur 10px. */
+[class*="friendsButtonContainer_"] [class*="interactive_"] {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+}
+[class*="privateChannels_"] [class*="searchBar_"] button {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
 }
