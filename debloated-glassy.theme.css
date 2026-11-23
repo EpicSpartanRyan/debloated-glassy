@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 12.3.0
+  * @version 12.4.0
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -3078,4 +3078,44 @@ div[class*="role_p3g15p"] {
   background: rgba(255, 255, 255, 0.08) !important;
   backdrop-filter: blur(10px) !important;
   color: #ffffff !important;
+}
+
+/* ============ Barra de tabs de Friends: solo el activo visible v12.4.0 ============ */
+/* v12.4.0 (2026-11-23): Bryan: solo el botón activo visible; al pasar el
+   mouse sobre la barra, los demás salen desde el botón activo hasta su
+   posición. Misma animación que el micrófono y los cascos al pasar sobre
+   el engranaje (v12.0.0): deslizar + aparecer, 0.2 s. El hover cubre toda
+   la barra (no solo el botón activo) para que no desaparezcan a medio
+   camino. El colapso usa max-width 0 + overflow hidden + visibility
+   hidden + pointer-events none (display:none mataría la transición).
+   El :not(:hover) en el colapso hace que padding/margen vuelvan a los de
+   Discord al expandir, sin adivinarlos. Espejo del mic/casco: ellos salen
+   del engranaje hacia la izquierda (translateX 12px→0); los tabs salen
+   del botón activo hacia la derecha (translateX -12px→0). */
+[aria-label="Friends"] [class*="tabBar_"] [class*="item_"] {
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  transition: max-width 0.2s, opacity 0.2s, transform 0.2s, visibility 0.2s, padding 0.2s, margin 0.2s !important;
+}
+[aria-label="Friends"] [class*="tabBar_"]:not(:hover) {
+  gap: 0 !important;
+}
+[aria-label="Friends"] [class*="tabBar_"]:not(:hover) [class*="item_"]:not([class*="selected_"]) {
+  max-width: 0 !important;
+  min-width: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateX(-12px) !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+[aria-label="Friends"] [class*="tabBar_"]:hover [class*="item_"]:not([class*="selected_"]) {
+  max-width: 160px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateX(0) !important;
 }
