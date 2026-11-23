@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 12.1.1
+  * @version 12.1.2
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -1526,6 +1526,27 @@ svg:has(foreignObject[mask*="svg-mask-avatar-status"]) > circle {
    todos usan la fuente normal. */
 [class*="dnsFont"], [class*="dnsFont"] * {
   font-family: inherit !important;
+}
+
+/* Los gradientes y colores custom en los nombres (Display Name
+   Styles) en la lista de DMs: se neutralizan. El tema ya forzaba
+   la fuente con dnsFont, pero el gradiente del nombre
+   (background-clip: text + -webkit-text-fill-color: transparent)
+   y el color sólido seguían pasando y se veían al hacer hover o
+   al tener el chat seleccionado (Kreta). Se fuerza fuente normal,
+   sin gradiente, texto blanco, sin animación ni efectos. */
+li[class*="dm_"] [class*="container_or4Hj-"],
+li[class*="dm_"] [class*="container_or4Hj-"] [class*="innerContainer_or4Hj-"] {
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  background: none !important;
+  background-image: none !important;
+  -webkit-text-fill-color: #ffffff !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  animation: none !important;
+  text-shadow: none !important;
+  filter: none !important;
 }
 
 /* El scroll (la barrita): solo se renderiza cuando el mouse está
