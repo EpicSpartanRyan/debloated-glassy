@@ -1,7 +1,7 @@
 /**
   * @name debloated-glassy
   * @author EpicSpartanRyan
-  * @version 12.4.0
+  * @version 12.4.1
   * @description Debloated Discord theme with glassy panels
 */
 
@@ -554,9 +554,14 @@ div[class*="divider"][class*="hasContent"] span[class*="content"] {
 
 /* Nitro, Shop, Family Center y Quests: ocultar de la
    lista de mensajes directos (son enlaces a /store,
-   /shop, /family-center y /quests). */
-[href="/store"], [href="/shop"], [href="/family-center"], [href="/quests"],
-li:has([href="/store"]), li:has([href="/shop"]), li:has([href="/family-center"]), li:has([href="/quests"]) {
+   /shop, /family-center, /quests y /quest-home).
+   2026-11-23: Discord cambió la entrada de Quests en la
+   lista de DMs a /quest-home (antes /quests), por eso se
+   coló pese a la regla anterior; se añade /quest-home y
+   su wrapper exterior. */
+[href="/store"], [href="/shop"], [href="/family-center"], [href="/quests"], [href="/quest-home"],
+li:has([href="/store"]), li:has([href="/shop"]), li:has([href="/family-center"]), li:has([href="/quests"]), li:has([href="/quest-home"]),
+div[class*="wrapper_"]:has([href="/quest-home"]) {
   display: none !important;
 }
 
